@@ -38,10 +38,10 @@ export function DashboardNav({ items, setOpen, isCollapsed }: DashboardNavProps)
                   item.disabled && "cursor-not-allowed opacity-80"
                 )}
               >
-                <Icon className="mr-2 h-4 w-4" />
-                {isCollapsed ? null : <span>{item.title}</span>} {/* Text appears when sidebar is extended */}
-                {isCollapsed ? null : item.count && <span className="ml-auto text-xs font-semibold">{item.count}</span>}
-                {isCollapsed ? null : item.tag && <span className="ml-auto bg-[#adfa1d] text-black text-xs px-2 rounded-md">{item.tag}</span>}
+                <Icon className="icon-element mr-2 h-4 w-4" />
+                {isCollapsed ? null : <span className="text-element">{item.title}</span>} {/* Text appears when sidebar is extended */}
+                {isCollapsed ? null : item.count && <span className="text-element ml-auto text-xs font-semibold">{item.count}</span>}
+                {isCollapsed ? null : item.tag && <span className="text-element ml-auto bg-[#adfa1d] text-black text-xs px-2 rounded-md">{item.tag}</span>}
               </span>
             </Link>
           )

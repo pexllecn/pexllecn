@@ -35,16 +35,10 @@ export default function Sidebar({ className }: SidebarProps) {
   const [disableHover, setDisableHover] = useState(false);
 
 
-
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
-    setDisableHover(true);
-  
-    setTimeout(() => {
-      setDisableHover(false);
-    }, 300); // Adjust the time based on your sidebar transition time
   };
-  
+
 
   React.useEffect(() => {
     // Assuming the 'system' theme aligns with light mode
@@ -62,18 +56,15 @@ export default function Sidebar({ className }: SidebarProps) {
 
   return (
     
-<div className={cn("sidebar flex flex-col h-full border bg-muted", className, { 'collapsed': isCollapsed, 'disable-hover': disableHover })}>
-      
+    <div className={`sidebar flex flex-col h-full border bg-muted ${className} ${isCollapsed ? 'collapsed' : ''}`}>
       <div className="overflow-auto">
-
-      
       <div className="logo-container space-y-4 py-4 hidden md:block">
           {/* Use the logo state for rendering */}
           <img src={logo} className="logo-image px-8 py-2" alt="Logo" />
         </div>
-        <div className="flex justify-center items-center gap-2 py-2">
+        <div className="flex justify-center items-center gap-2 py-6">
             <UserNav />
-            <div className="flex flex-col space-y-1">
+          <div className={`hide-when-collapsed transition-all ${isCollapsed ? 'hidden' : ''}`}>
             <p className="text-xs font-medium leading-none">Khaled Alkurdi</p>
             <p className="text-xs leading-none text-muted-foreground">
               khaled@me.com
@@ -89,7 +80,7 @@ export default function Sidebar({ className }: SidebarProps) {
             </div>  
             </div>
 
-<footer className="footer justify-end absolute bottom-0 left-0 right-0 p-3">
+<footer className="px-3 py-2">
         {/* Set the footer to position: absolute, aligned to the bottom */}
         <TooltipProvider delayDuration={100}>
   <Tooltip>
