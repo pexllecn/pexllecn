@@ -47,7 +47,7 @@ export default function Sidebar({ className }: SidebarProps) {
     const effectiveTheme = theme === 'system' ? 'light' : theme;
   
     if (effectiveTheme === 'light') {
-      setLogo("/pexlle.png"); // Path for the light theme logo
+      setLogo("/pexlleh.svg"); // Path for the light theme logo
     } else {
       setLogo("/pexllelight.png"); // Path for the dark theme logo
     }

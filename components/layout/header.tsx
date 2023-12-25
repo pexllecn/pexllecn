@@ -24,13 +24,15 @@ export default function Header() {
   const [logo, setLogo] = React.useState("/pexlle.png"); // Initialize logo state with dark logo
 
   React.useEffect(() => {
-    // Update the logo based on the theme
-    if (theme === 'light') {
-      setLogo("/pexlle.png");
+    // Assuming the 'system' theme aligns with light mode
+    const effectiveTheme = theme === 'system' ? 'light' : theme;
+  
+    if (effectiveTheme === 'light') {
+      setLogo("/pexlleh.svg"); // Path for the light theme logo
     } else {
-      setLogo("/pexllelight.png");
+      setLogo("/pexllelight.png"); // Path for the dark theme logo
     }
-  }, [theme]); // Run this effect when theme changes
+  }, [theme]);
 
   return (
     <div className="fixed top-0 left-0 right-0 supports-backdrop-blur:bg-background/60 border-b bg-background/60 backdrop-blur z-20">
