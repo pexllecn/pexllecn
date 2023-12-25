@@ -10,12 +10,18 @@ export default function MailPage() {
   const [defaultCollapsed, setDefaultCollapsed] = useState(undefined);
 
   useEffect(() => {
-    const getCookieValue = (name) => {
+    const getCookieValue = (name: string) => {
       const value = `; ${document.cookie}`;
       const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop().split(';').shift();
+      if (parts.length === 2) {
+        const lastPart = parts.pop();
+        if (lastPart !== undefined) {
+          return lastPart.split(';').shift();
+        }
+      }
       return undefined;
     };
+    
 
     const layoutCookieValue = getCookieValue("react-resizable-panels:layout");
     const collapsedCookieValue = getCookieValue("react-resizable-panels:collapsed");
@@ -23,7 +29,7 @@ export default function MailPage() {
     console.log("layout cookie value:", layoutCookieValue);
     console.log("collapsed cookie value:", collapsedCookieValue);
 
-    const parseCookieValue = (value) => {
+    const parseCookieValue = (value: string | undefined) => {
       try {
         return value ? JSON.parse(value) : undefined;
       } catch (error) {
