@@ -51,6 +51,7 @@
     "fontsource-montserrat": "^4.0.0",
     "geist": "^1.2.0",
     "jotai": "^2.6.0",
+    "js-cookie": "^3.0.5",
     "lucide-react": "^0.300.0",
     "next": "14.0.4",
     "next-themes": "^0.2.1",

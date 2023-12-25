@@ -11,8 +11,6 @@ import { MobileSidebar } from "./mobile-sidebar";
 import { Separator } from "@/components/ui/separator"
 import { Badge } from "@/components/ui/badge"
 import Image from 'next/image';
-
-
 import {
   Tooltip,
   TooltipContent,
@@ -20,25 +18,31 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-
-
-
-// import { Playlist } from "../data/playlists";
-
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
   // playlists: Playlist[];
 }
 
 export default function Sidebar({ className }: SidebarProps) {
   const { theme, setTheme } = useTheme();
-  const [logo, setLogo] = React.useState("/pexlle.png");
-  const [isCollapsed, setIsCollapsed] = useState(false); // State to manage sidebar collapse
+  const [logo, setLogo] = React.useState("/pexlleh.svg");
   const [canHover, setCanHover] = useState(true);
   const [disableHover, setDisableHover] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
+  React.useEffect(() => {
+    // This code will run only on the client-side after the component mounts
+    const savedCollapseState = localStorage.getItem('sidebarCollapsed');
+    setIsCollapsed(savedCollapseState === 'true');
+  }, []);
 
   const toggleCollapse = () => {
-    setIsCollapsed(!isCollapsed);
+    const newCollapsedState = !isCollapsed;
+    setIsCollapsed(newCollapsedState);
+    
+    // Ensure localStorage is accessed only on client-side
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('sidebarCollapsed', String(newCollapsedState));
+    }
   };
 
 
