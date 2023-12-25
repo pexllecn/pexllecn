@@ -1,16 +1,12 @@
 "use client"
 import { DashboardNav } from "@/components/dashboard-nav";
 import { navItems } from "@/constants/data";
-import { cn } from "@/lib/utils";
 import { UserNav } from "./user-nav";
 import { Moon, PanelLeftClose, PanelLeftOpen, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import React, { useState } from 'react';
-import { MobileSidebar } from "./mobile-sidebar";
 import { Separator } from "@/components/ui/separator"
-import { Badge } from "@/components/ui/badge"
-
 import {
   Tooltip,
   TooltipContent,
@@ -30,26 +26,42 @@ interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
 export default function Sidebar({ className }: SidebarProps) {
   const { theme, setTheme } = useTheme();
   const [logo, setLogo] = React.useState("/pexlle.png");
-  const [isCollapsed, setIsCollapsed] = useState(false); // State to manage sidebar collapse
   const [canHover, setCanHover] = useState(true);
   const [disableHover, setDisableHover] = useState(false);
 
 
-  const toggleCollapse = () => {
+  const [isCollapsed, setIsCollapsed] = useState(() => {
+    const saved = localStorage.getItem('sidebarCollapsed');
+    return saved === 'true'; // Convert string to boolean
+  });
+
+
+  function toggleCollapse() {
     setIsCollapsed(!isCollapsed);
-  };
+  }
 
 
   React.useEffect(() => {
-    // Assuming the 'system' theme aligns with light mode
     const effectiveTheme = theme === 'system' ? 'light' : theme;
-  
+
     if (effectiveTheme === 'light') {
       setLogo("/pexlle.png"); // Path for the light theme logo
     } else {
       setLogo("/pexllelight.png"); // Path for the dark theme logo
     }
   }, [theme]);
+
+  // useEffect for handling the sidebar collapsed state
+  React.useEffect(() => {
+    const saved = localStorage.getItem('sidebarCollapsed');
+    if (saved) {
+      setIsCollapsed(saved === 'true');
+    }
+  }, []);
+
+  React.useEffect(() => {
+    localStorage.setItem('sidebarCollapsed', isCollapsed.toString());
+  }, [isCollapsed]);
   
   
   
