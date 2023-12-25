@@ -7,6 +7,8 @@ import { UserNav } from "./user-nav";
 import * as React from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
+import Image from 'next/image';
+
 
 import { Button } from "@/components/ui/button"
 import {
@@ -35,7 +37,7 @@ export default function Header() {
       <nav className="h-14 flex items-center justify-between px-4">
         <div className="hidden md:block">
           {/* Use the logo state for rendering */}
-          <img src={logo} className="h-7" />
+          <Image src={logo} className="h-7" alt={""} />
         </div>
         <div className={cn("block sm:!hidden")}>
           <MobileSidebar />
