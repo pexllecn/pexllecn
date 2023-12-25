@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -7,13 +5,16 @@ import { Icons } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import { NavItem } from "@/types";
 import { Dispatch, SetStateAction } from "react";
+import React, { useState } from "react"; // Import useState
+
 
 interface DashboardNavProps {
   items: NavItem[];
   setOpen?: Dispatch<SetStateAction<boolean>>;
+  isCollapsed: boolean; // Add this line
 }
 
-export function DashboardNav({ items, setOpen }: DashboardNavProps) {
+export function DashboardNav({ items, setOpen, isCollapsed }: DashboardNavProps) { // Add isCollapsed here
   const path = usePathname();
 
   if (!items?.length) {
@@ -29,25 +30,18 @@ export function DashboardNav({ items, setOpen }: DashboardNavProps) {
         
         return (
           item.href && (
-            <Link
-              key={index}
-              href={item.disabled ? "/" : item.href}
-              onClick={() => {
-                if (setOpen) setOpen(false);
-              }}
-            >
+            <Link key={index} href={item.disabled ? "/" : item.href} onClick={() => setOpen?.(false)}>
               <span
                 className={cn(
                   "group flex items-center rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent",
                   (isHome || isActive) ? "bg-primary text-primary-foreground shadow font-medium hover:bg-primary/90 rounded-md justify-start" : "transparent",
                   item.disabled && "cursor-not-allowed opacity-80"
                 )}
-                
               >
                 <Icon className="mr-2 h-4 w-4" />
-                <span>{item.title}</span>
-                {item.count && <span className="ml-auto text-xs font-semibold">{item.count}</span>}
-                {item.tag && <span className="ml-auto bg-[#adfa1d] text-black text-xs px-2 rounded-md">{item.tag}</span>}
+                {isCollapsed ? null : <span>{item.title}</span>} {/* Text appears when sidebar is extended */}
+                {isCollapsed ? null : item.count && <span className="ml-auto text-xs font-semibold">{item.count}</span>}
+                {isCollapsed ? null : item.tag && <span className="ml-auto bg-[#adfa1d] text-black text-xs px-2 rounded-md">{item.tag}</span>}
               </span>
             </Link>
           )
@@ -56,4 +50,3 @@ export function DashboardNav({ items, setOpen }: DashboardNavProps) {
     </nav>
   );
 }
-

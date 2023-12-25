@@ -3,19 +3,21 @@ import { DashboardNav } from "@/components/dashboard-nav";
 import { navItems } from "@/constants/data";
 import { cn } from "@/lib/utils";
 import { UserNav } from "./user-nav";
-import { Moon, Sun } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { useTheme } from "next-themes"
-import * as React from "react"
+import { Moon, PanelLeftClose, PanelLeftOpen, Sun } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useTheme } from "next-themes";
+import React, { useState } from 'react';
 import { MobileSidebar } from "./mobile-sidebar";
 import { Separator } from "@/components/ui/separator"
 import { Badge } from "@/components/ui/badge"
+
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
+
 
 
 
@@ -28,7 +30,22 @@ interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export default function Sidebar({ className }: SidebarProps) {
   const { theme, setTheme } = useTheme();
-  const [logo, setLogo] = React.useState("/pexlle.png"); // Initialize logo state with dark logo
+  const [logo, setLogo] = React.useState("/pexlle.png");
+  const [isCollapsed, setIsCollapsed] = useState(false); // State to manage sidebar collapse
+  const [canHover, setCanHover] = useState(true);
+  const [disableHover, setDisableHover] = useState(false);
+
+
+
+  const toggleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+    setDisableHover(true);
+  
+    setTimeout(() => {
+      setDisableHover(false);
+    }, 300); // Adjust the time based on your sidebar transition time
+  };
+  
 
   React.useEffect(() => {
     // Update the logo based on the theme
@@ -41,9 +58,11 @@ export default function Sidebar({ className }: SidebarProps) {
 
   return (
     
-    <div className={cn("flex flex-col h-full border bg-muted", className)}>
+<div className={cn("sidebar flex flex-col h-full border bg-muted", className, { 'collapsed': isCollapsed, 'disable-hover': disableHover })}>
+      
       <div className="overflow-auto">
 
+      
       <div className="space-y-4 py-4 hidden md:block">
           {/* Use the logo state for rendering */}
           <img src={logo} className="px-8 py-2" />
@@ -58,11 +77,11 @@ export default function Sidebar({ className }: SidebarProps) {
             </div>
             </div>
         
-      <div className="space-y-4 py-4">
+      <div className="overflow-auto">
         <div className="px-3 py-2">
           <div className="space-y-1">
           <Separator className="mb-4" />
-            <DashboardNav items={navItems} />
+            <DashboardNav items={navItems} isCollapsed={false} />
             </div>  
             </div>
 
@@ -82,6 +101,21 @@ export default function Sidebar({ className }: SidebarProps) {
     <TooltipContent>Light/Dark</TooltipContent>
   </Tooltip>
 </TooltipProvider>
+
+<TooltipProvider delayDuration={100}>
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <Button onClick={toggleCollapse} className="p-2" variant="outline" size="icon">
+        {isCollapsed 
+          ? <PanelLeftOpen className="h-[1.2rem] w-[1.2rem]" /> // Icon for expand
+          : <PanelLeftClose className="h-[1.2rem] w-[1.2rem]" />  // Icon for collapse
+        }
+        </Button>
+    </TooltipTrigger>
+    <TooltipContent>Toggle sidebar</TooltipContent>
+  </Tooltip>
+</TooltipProvider>
+
 
       </footer>
 
