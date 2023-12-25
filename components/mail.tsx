@@ -72,12 +72,7 @@ export function Mail({
           collapsible={true}
           minSize={15}
           maxSize={20}
-          onCollapse={(collapsed) => {
-            setIsCollapsed(collapsed)
-            document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(
-              collapsed
-            )}`
-          }}
+          
           className={cn(isCollapsed && "transition-all duration-300 ease-in-out")}
         >
           <div className="flex items-center p-2">
