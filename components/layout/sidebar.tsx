@@ -47,13 +47,18 @@ export default function Sidebar({ className }: SidebarProps) {
   
 
   React.useEffect(() => {
-    // Update the logo based on the theme
-    if (theme === 'light') {
-      setLogo("/pexlle.png");
+    // Assuming the 'system' theme aligns with light mode
+    const effectiveTheme = theme === 'system' ? 'light' : theme;
+  
+    if (effectiveTheme === 'light') {
+      setLogo("/pexlle.png"); // Path for the light theme logo
     } else {
-      setLogo("/pexllelight.png");
+      setLogo("/pexllelight.png"); // Path for the dark theme logo
     }
-  }, [theme]); // Run this effect when theme changes
+  }, [theme]);
+  
+  
+  
 
   return (
     
@@ -62,9 +67,9 @@ export default function Sidebar({ className }: SidebarProps) {
       <div className="overflow-auto">
 
       
-      <div className="space-y-4 py-4 hidden md:block">
+      <div className="logo-container space-y-4 py-4 hidden md:block">
           {/* Use the logo state for rendering */}
-          <img src={logo} className="px-8 py-2" />
+          <img src={logo} className="logo-image px-8 py-2" alt="Logo" />
         </div>
         <div className="flex justify-center items-center gap-2 py-2">
             <UserNav />
@@ -84,7 +89,7 @@ export default function Sidebar({ className }: SidebarProps) {
             </div>  
             </div>
 
-            <footer className="justify-end absolute bottom-0 left-0 right-0 p-3">
+<footer className="footer justify-end absolute bottom-0 left-0 right-0 p-3">
         {/* Set the footer to position: absolute, aligned to the bottom */}
         <TooltipProvider delayDuration={100}>
   <Tooltip>

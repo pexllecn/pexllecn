@@ -72,10 +72,37 @@
   width: 64px; /* Collapsed width */
 }
 
+/* Hide text elements inside the sidebar when it's collapsed */
+.sidebar.collapsed .text-element {
+  display: none;
+}
+
+/* Adjust icon size or any other elements specifically for the collapsed state */
+.sidebar.collapsed .icon-element {
+  /* Example: Resize icons or adjust padding/margins */
+}
+
+
 
 .sidebar:not(.disable-hover):hover {
   width: 256px; /* Width on hover */
 }
+
+.sidebar .logo-container {
+  display: flex;
+  justify-content: center; /* Center the image in the container */
+  overflow: hidden; /* Hide the overflow (part of the image) */
+}
+
+.sidebar.collapsed .logo-container {
+  width: 100%; /* Set to 100% of the sidebar width when collapsed */
+}
+
+.logo-image {
+  min-width: 100%; /* Ensure the image covers the entire width of the container */
+  /* Remove padding if it's causing issues with the display */
+}
+
 
 
 
