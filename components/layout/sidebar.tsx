@@ -21,7 +21,6 @@ import {
 
 
 
-
 // import { Playlist } from "../data/playlists";
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -81,7 +80,7 @@ export default function Sidebar({ className }: SidebarProps) {
         <div className="px-3 py-2">
           <div className="space-y-1">
           <Separator className="mb-4" />
-            <DashboardNav items={navItems} isCollapsed={false} />
+            <DashboardNav items={navItems} />
             </div>  
             </div>
 
@@ -155,3 +154,4 @@ export default function Sidebar({ className }: SidebarProps) {
     </div>
   );
 }
+

@@ -11,8 +11,8 @@ import React, { useState } from "react"; // Import useState
 interface DashboardNavProps {
   items: NavItem[];
   setOpen?: Dispatch<SetStateAction<boolean>>;
-  isCollapsed: boolean; // Add this line
-}
+    isCollapsed?: boolean; // Make it optional
+  }
 
 export function DashboardNav({ items, setOpen, isCollapsed }: DashboardNavProps) { // Add isCollapsed here
   const path = usePathname();

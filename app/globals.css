@@ -70,26 +70,12 @@
 
 .sidebar.collapsed {
   width: 64px; /* Collapsed width */
-  overflow: hidden;
-  transition: width 0.3s ease; /* Add width transition */
 }
 
-.sidebar.collapsed:hover {
+
+.sidebar:not(.disable-hover):hover {
   width: 256px; /* Width on hover */
 }
-
-.sidebar.collapsed span {
-  opacity: 0; /* Hide text by default */
-  transition: opacity 0.3s ease; /* Add opacity transition */
-}
-
-.sidebar.collapsed:hover span {
-  opacity: 1; /* Show text on hover */
-}
-
-
-
-
 
 
 
