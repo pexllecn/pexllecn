@@ -113,12 +113,6 @@ export type Employee = {
   profile_picture?: string | null; // Profile picture can be a string (URL) or null (if no picture)
 };
 
-export type NavItem = {
-  // ... other properties
-  count?: number; // for showing numbers
-  tag?: string; // for showing tags like 'new'
-};
-
 
 export const navItems: NavItem[] = [
   

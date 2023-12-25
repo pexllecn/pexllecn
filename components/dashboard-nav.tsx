@@ -25,7 +25,7 @@ export function DashboardNav({ items, setOpen }: DashboardNavProps) {
       {items.map((item, index) => {
         const Icon = Icons[item.icon || "arrowRight"];
         const isHome = item.href === "/dashboard" && path === "/dashboard";
-        const isActive = item.href !== "/dashboard" && path.startsWith(item.href);
+        const isActive = item.href !== "/dashboard" && path.startsWith(item.href ?? "");
         
         return (
           item.href && (
@@ -39,9 +39,10 @@ export function DashboardNav({ items, setOpen }: DashboardNavProps) {
               <span
                 className={cn(
                   "group flex items-center rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent",
-                  (isHome || isActive) ? "bg-primary text-primary-foreground shadow font-medium hover:bg-primary/90 text-primary-foreground shadow rounded-md text-sm justify-start" : "transparent",
-                  item.disabled && "cursor-not-allowed opacity-80",
+                  (isHome || isActive) ? "bg-primary text-primary-foreground shadow font-medium hover:bg-primary/90 rounded-md justify-start" : "transparent",
+                  item.disabled && "cursor-not-allowed opacity-80"
                 )}
+                
               >
                 <Icon className="mr-2 h-4 w-4" />
                 <span>{item.title}</span>
