@@ -3,6 +3,8 @@ import Sidebar from "@/components/layout/sidebar";
 import type { Metadata } from "next";
 import { MobileSidebar } from "@/components/layout/mobile-sidebar";
 import { cn } from "@/lib/utils";
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
 
 
 
@@ -25,6 +27,7 @@ export default function DashboardLayout({
         <Sidebar className="w-64 hidden md:block" />
         <main className="flex-1 overflow-x-hidden overflow-y-auto ">
           {children}
+          <SpeedInsights />
         </main>
       </div>
     </>
