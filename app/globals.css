@@ -80,7 +80,8 @@
 }
 
 .sidebar.collapsed .logo-image {
-  padding-left: 10px;
+  padding-left: 20px;
+  padding-right: 1rem;
   height:51.68px;
   -o-object-position: left;
   object-position: left;

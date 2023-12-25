@@ -92,7 +92,7 @@ export default function Sidebar({ className }: SidebarProps) {
   <Tooltip>
     <TooltipTrigger asChild>
       <Button 
-        variant="outline" 
+        variant="ghost" 
         size="icon" 
         onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
         <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"/>
@@ -106,7 +106,7 @@ export default function Sidebar({ className }: SidebarProps) {
 <TooltipProvider delayDuration={100}>
   <Tooltip>
     <TooltipTrigger asChild>
-      <Button onClick={toggleCollapse} className="p-2" variant="outline" size="icon">
+      <Button onClick={toggleCollapse} className="p-2" variant="ghost">
         {isCollapsed 
           ? <PanelLeftOpen className="h-[1.2rem] w-[1.2rem]" /> // Icon for expand
           : <PanelLeftClose className="h-[1.2rem] w-[1.2rem]" />  // Icon for collapse
