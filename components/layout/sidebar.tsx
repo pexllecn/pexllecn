@@ -62,7 +62,7 @@ export default function Sidebar({ className }: SidebarProps) {
       <div className="overflow-auto">
       <div className="logo-container space-y-4 py-4 hidden md:block">
           {/* Use the logo state for rendering */}
-          <Image src={logo} className="logo-image px-8 py-2" alt="Logo" />
+          <img src={logo} className="logo-image px-8 py-2" alt="Logo" />
         </div>
         <div className="flex justify-center items-center gap-2 py-6">
             <UserNav />

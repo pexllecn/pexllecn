@@ -37,7 +37,7 @@ export default function Header() {
       <nav className="h-14 flex items-center justify-between px-4">
         <div className="hidden md:block">
           {/* Use the logo state for rendering */}
-          <Image src={logo} className="h-7" alt={""} />
+          <img src={logo} className="h-7" />
         </div>
         <div className={cn("block sm:!hidden")}>
           <MobileSidebar />
