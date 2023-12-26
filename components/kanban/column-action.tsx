@@ -57,7 +57,7 @@ export function ColumnActions({
         <Input
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="text-base !mt-0 mr-auto disabled:opacity-100 disabled:cursor-pointer disabled:border-none"
+          className="text-base !mt-0 mr-auto disabled:opacity-100 disabled:cursor-pointer shadow-none disabled:border-none"
           disabled={editDisable}
           ref={inputRef}
         />

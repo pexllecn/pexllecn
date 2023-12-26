@@ -62,7 +62,7 @@ export function TaskCard({ task, isOverlay }: TaskCardProps) {
     <Card
       ref={setNodeRef}
       style={style}
-      className={`border-none shadow-sm ${variants({
+      className={`border-none shadow ${variants({
         dragging: isOverlay ? "overlay" : isDragging ? "over" : undefined,
       })}`}
 
