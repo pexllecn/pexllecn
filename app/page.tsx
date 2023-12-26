@@ -42,7 +42,7 @@ export default function DashboardLayout({}: {}) {
               <ArrowRightIcon className="ml-1 h-4 w-4" />
             </Link>
             <span className="text-center text-5xl font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]">
-              <span className="animate-pulse text-gradient_indigo-purple font-bold">
+              <span className="text-gradient_indigo-purple font-bold">
                 Build your {""}
               </span>
               website Beautifully.

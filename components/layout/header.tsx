@@ -10,6 +10,8 @@ import { usePathname } from "next/navigation";
 import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { buttonVariants } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
+
 import {
   Tooltip,
   TooltipContent,
@@ -22,7 +24,7 @@ export default function Header() {
   const pathname = usePathname();
 
   const { theme, setTheme } = useTheme();
-  const [logo, setLogo] = React.useState("/pexlle.png"); // Initialize logo state with dark logo
+  const [logo, setLogo] = React.useState("/pexlleh.svg"); // Initialize logo state with dark logo
 
   React.useEffect(() => {
     // Assuming the 'system' theme aligns with light mode
@@ -105,7 +107,7 @@ export default function Header() {
 
         <div className="flex items-center gap-2 ">
           <CommandMenu />
-          <Link href={"twiter"} target="_blank" rel="noreferrer">
+          <Link href={siteConfig.links.github} target="_blank" rel="noreferrer">
             <div
               className={cn(
                 buttonVariants({
@@ -118,7 +120,11 @@ export default function Header() {
               <span className="sr-only">GitHub</span>
             </div>
           </Link>
-          <Link href={"twitter.com"} target="_blank" rel="noreferrer">
+          <Link
+            href={siteConfig.links.twitter}
+            target="_blank"
+            rel="noreferrer"
+          >
             <div
               className={cn(
                 buttonVariants({
