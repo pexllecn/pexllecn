@@ -1,14 +1,10 @@
-import BreadCrumb from "@/components/breadcrumb";
-import { CreateProfileOne } from "@/components/forms/user-profile-stepper/create-profile";
+import { Separator } from "@/registry/new-york/ui/separator";
+import { ProfileForm } from "@/app/dashboard/profile/profile-form";
 
-const breadcrumbItems = [{ title: "Profile", link: "/dashboard/profile" }];
-export default function page() {
+export default function SettingsProfilePage() {
   return (
-    <>
-      <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
-        <BreadCrumb items={breadcrumbItems} />
-        <CreateProfileOne categories={[]} initialData={null} />
-      </div>
-    </>
+    <div className="space-y-6">
+      <ProfileForm />
+    </div>
   );
 }

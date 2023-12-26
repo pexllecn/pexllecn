@@ -74,7 +74,7 @@ export default function Header() {
             Components
           </Link>
           <Link
-            href="/themes"
+            href="#"
             className={cn(
               "transition-colors hover:text-foreground/80",
               pathname?.startsWith("/themes")
