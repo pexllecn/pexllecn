@@ -50,7 +50,7 @@ export default function DashboardLayout({}: {}) {
             </span>
 
             <div className="flex space-x-4 pb-8 pt-4 md:pb-10">
-              <Link href="#" className={cn(buttonVariants())}>
+              <Link href="/dashboard" className={cn(buttonVariants())}>
                 Get Started
               </Link>
               <Link
