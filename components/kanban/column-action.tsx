@@ -64,7 +64,7 @@ export function ColumnActions({
       </form>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="secondary" className="ml-1">
+          <Button variant="secondary" className="ml-1 shadow-none">
             <span className="sr-only">Actions</span>
             <DotsHorizontalIcon className="h-4 w-4" />
           </Button>
