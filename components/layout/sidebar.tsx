@@ -24,7 +24,7 @@ const UserInfoSection = ({ isCollapsed }: { isCollapsed: boolean }) => (
   <div className="flex justify-center items-center gap-2 py-6">
     <UserNav />
     <div className={`hide-when-collapsed transition-all ${isCollapsed ? 'hidden' : ''}`}>
-      <p className="text-xs font-medium leading-none">Khaled Alkurdi</p>
+      <p className="text-sm font-medium leading-none">Khaled Alkurdi</p>
       <p className="text-xs leading-none text-muted-foreground">khaled@me.com</p>
     </div>
   </div>
@@ -89,8 +89,8 @@ export default function Sidebar({ className }: SidebarProps) {
   }, [theme]);
 
   return (
-    <div className={`sidebar flex flex-col h-full border bg-muted ${className} ${isCollapsed ? 'collapsed' : ''}`}>
-      <div className="flex flex-col flex-grow overflow-auto">
+    <div className={`p-4 sidebar flex flex-col h-full border bg-muted ${className} ${isCollapsed ? 'collapsed' : ''}`}>
+      <div className=" flex flex-col flex-grow overflow-auto">
         <LogoSection logo={logo} />
         <UserInfoSection isCollapsed={isCollapsed} />
         <NavigationSection />

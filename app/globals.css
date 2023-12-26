@@ -68,6 +68,7 @@
 }
 
 .sidebar.collapsed {
+  padding:0;
   width: 64px; /* Collapsed width */
 }
 
