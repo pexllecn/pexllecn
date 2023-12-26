@@ -20,6 +20,7 @@ export default function DashboardLayout({
 }) {
   return (
     <>
+    
     <div className={cn("p-5 block sm:!hidden")}>
           <MobileSidebar />
         </div>
