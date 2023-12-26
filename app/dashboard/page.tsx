@@ -1,9 +1,11 @@
+"use client";
 import { CalendarDateRangePicker } from "@/components/date-range-picker";
 import { Overview } from "@/components/overview";
 import { RecentSales } from "@/components/recent-sales";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { toast } from "sonner";
 import {
   Card,
   CardContent,
@@ -32,49 +34,59 @@ export default function page() {
           </h2>
           <div className="hidden md:flex items-center space-x-2">
             <CalendarDateRangePicker />
-            <Dialog>
-      <DialogTrigger asChild>
-        <Button size="sm">
-          Download
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Add New Todo</DialogTitle>
-          <DialogDescription>
-            What do you want to get done today?
-          </DialogDescription>
-        </DialogHeader>
-        <form
-          id="todo-form"
-          className="grid gap-4 py-4"
-        >
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Input
-              id="title"
-              name="title"
-              placeholder="Todo title..."
-              className="col-span-4"
-            />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Textarea
-              id="description"
-              name="description"
-              placeholder="Description..."
-              className="col-span-4"
-            />
-          </div>
-        </form>
-        <DialogFooter>
-          <DialogTrigger asChild>
-            <Button type="submit" size="sm" form="todo-form">
-              Add Todo
+            <Button
+              className="shadow-none"
+              variant="outline"
+              onClick={() =>
+                toast("Event has been created", {
+                  description: "Sunday, December 03, 2023 at 9:00 AM",
+                  action: {
+                    label: "Undo",
+                    onClick: () => console.log("Undo"),
+                  },
+                })
+              }
+            >
+              Add to Calendar
             </Button>
-          </DialogTrigger>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button size="sm">Download</Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px]">
+                <DialogHeader>
+                  <DialogTitle>Add New Todo</DialogTitle>
+                  <DialogDescription>
+                    What do you want to get done today?
+                  </DialogDescription>
+                </DialogHeader>
+                <form id="todo-form" className="grid gap-4 py-4">
+                  <div className="grid grid-cols-4 items-center gap-4">
+                    <Input
+                      id="title"
+                      name="title"
+                      placeholder="Todo title..."
+                      className="col-span-4"
+                    />
+                  </div>
+                  <div className="grid grid-cols-4 items-center gap-4">
+                    <Textarea
+                      id="description"
+                      name="description"
+                      placeholder="Description..."
+                      className="col-span-4"
+                    />
+                  </div>
+                </form>
+                <DialogFooter>
+                  <DialogTrigger asChild>
+                    <Button type="submit" size="sm" form="todo-form">
+                      Add Todo
+                    </Button>
+                  </DialogTrigger>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
         <Tabs defaultValue="overview" className="space-y-4">
@@ -156,7 +168,9 @@ export default function page() {
                   </svg>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold text-[#11c678]">+12,234</div>
+                  <div className="text-2xl font-bold text-[#11c678]">
+                    +12,234
+                  </div>
                   <p className="text-xs text-muted-foreground">
                     +19% from last month
                   </p>

@@ -1,6 +1,4 @@
-import { Icons } from "@/components/icons";
 import { NavItem, SidebarNavItem } from "@/types";
-import { FaceIcon, ImageIcon, SunIcon } from '@radix-ui/react-icons'
 
 
 export type User = {

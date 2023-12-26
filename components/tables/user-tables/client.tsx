@@ -11,9 +11,6 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 
-
-
-
 interface ProductsClientProps {
   data: User[];
 }
@@ -39,13 +36,11 @@ export const UserClient: React.FC<ProductsClientProps> = ({ data }) => {
         </Button>
   */}
         <Link
-            href={"/dashboard/user/new"}
-            className={cn(buttonVariants({ variant: "default" , size:"sm"  }))}
-          >
-            <Plus className="mr-2 h-4 w-4" /> Add New
-          </Link>
-
-
+          href={"/dashboard/user/new"}
+          className={cn(buttonVariants({ variant: "default", size: "sm" }))}
+        >
+          <Plus className="mr-2 h-4 w-4" /> Add New
+        </Link>
       </div>
       <Separator />
       <DataTable searchKey="name" columns={columns} data={data} />

@@ -1,10 +1,10 @@
-"use client"
- 
-import * as React from "react"
-import {addDays} from "date-fns/addDays"
-import {addHours} from "date-fns/addHours"
+"use client";
+
+import * as React from "react";
+import { addDays } from "date-fns/addDays";
+import { addHours } from "date-fns/addHours";
 import { format } from "date-fns";
-import {nextSaturday} from "date-fns/nextSaturday"
+import { nextSaturday } from "date-fns/nextSaturday";
 import {
   Archive,
   ArchiveX,
@@ -14,50 +14,44 @@ import {
   Reply,
   ReplyAll,
   Trash2,
-} from "lucide-react"
+} from "lucide-react";
 
 import {
   DropdownMenuContent,
   DropdownMenuItem,
-} from "@/components/ui/dropdown-menu"
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/dropdown-menu";
+import { Label } from "@/components/ui/label";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
-import { Separator } from "@/components/ui/separator"
-import { Switch } from "@/components/ui/switch"
-import { Textarea } from "@/components/ui/textarea"
+} from "@/components/ui/popover";
+import { Separator } from "@/components/ui/separator";
+import { Switch } from "@/components/ui/switch";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
-import { Mail } from "@/app/data"
-import { Moon, Sun } from "lucide-react"
-import { useTheme } from "next-themes"
-
+} from "@/components/ui/tooltip";
+import { Mail } from "@/app/data";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 
 interface MailDisplayProps {
-  mail: Mail | null
+  mail: Mail | null;
 }
 
 export function MailDisplay({ mail }: MailDisplayProps) {
-  const today = new Date()
-  const { setTheme } = useTheme()
-
+  const today = new Date();
+  const { setTheme } = useTheme();
 
   return (
     <div className="flex h-full flex-col">
@@ -152,7 +146,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
           </Tooltip>
         </div>
         <div className="ml-auto flex items-center gap-2">
-           <Tooltip>
+          <Tooltip>
             <TooltipTrigger asChild>
               <Button variant="ghost" size="icon" disabled={!mail}>
                 <Reply className="h-4 w-4" />
@@ -200,16 +194,22 @@ export function MailDisplay({ mail }: MailDisplayProps) {
 
         <Tooltip>
           <TooltipTrigger asChild>
-        <Button variant="ghost" size="icon">
-          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" onClick={() => setTheme("dark")}/>
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" onClick={() => setTheme("light")}/>
-        </Button>
-              </TooltipTrigger>
-              <TooltipContent>Light/Dark</TooltipContent>
-          </Tooltip>
+            <Button variant="ghost" size="icon">
+              <Sun
+                className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+                onClick={() => setTheme("dark")}
+              />
+              <Moon
+                className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
+                onClick={() => setTheme("light")}
+              />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>Light/Dark</TooltipContent>
+        </Tooltip>
       </div>
       <Separator />
-      
+
       {mail ? (
         <div className="flex flex-1 flex-col">
           <div className="flex items-start p-4">
@@ -271,5 +271,5 @@ export function MailDisplay({ mail }: MailDisplayProps) {
         </div>
       )}
     </div>
-  )
+  );
 }

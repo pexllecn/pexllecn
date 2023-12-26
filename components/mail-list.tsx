@@ -1,19 +1,17 @@
-import { ComponentProps } from "react"
-import { cn } from "@/lib/utils"
-import { Badge } from "@/components/ui/badge"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { Separator } from "@/components/ui/separator"
-import { Mail } from "@/app/data"
-import { useMail } from "@/app/use-mail"
-import { formatDistanceToNow } from 'date-fns';
-
+import { ComponentProps } from "react";
+import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Mail } from "@/app/data";
+import { useMail } from "@/app/use-mail";
+import { formatDistanceToNow } from "date-fns";
 
 interface MailListProps {
-  items: Mail[]
+  items: Mail[];
 }
 
 export function MailList({ items }: MailListProps) {
-  const [mail, setMail] = useMail()
+  const [mail, setMail] = useMail();
 
   return (
     <ScrollArea className="h-screen">
@@ -71,19 +69,19 @@ export function MailList({ items }: MailListProps) {
         ))}
       </div>
     </ScrollArea>
-  )
+  );
 }
 
 function getBadgeVariantFromLabel(
   label: string
 ): ComponentProps<typeof Badge>["variant"] {
   if (["work"].includes(label.toLowerCase())) {
-    return "default"
+    return "default";
   }
 
   if (["personal"].includes(label.toLowerCase())) {
-    return "outline"
+    return "outline";
   }
 
-  return "secondary"
+  return "secondary";
 }

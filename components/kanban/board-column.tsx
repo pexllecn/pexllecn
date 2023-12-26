@@ -57,28 +57,24 @@ export function BoardColumn({ column, tasks, isOverlay }: BoardColumnProps) {
     transform: CSS.Translate.toString(transform),
   };
 
-  const variants = cva(
-    "pb-1 flex flex-col flex-shrink-0 snap-center",
-    {
-      variants: {
-        dragging: {
-          default: "border-transparent",
-          over: "ring-2 opacity-30",
-          overlay: "ring-2 ring-primary",
-        },
+  const variants = cva("pb-1 flex flex-col flex-shrink-0 snap-center", {
+    variants: {
+      dragging: {
+        default: "border-transparent",
+        over: "ring-2 opacity-30",
+        overlay: "ring-2 ring-primary",
       },
     },
-  );
+  });
 
   return (
     <Card
-  ref={setNodeRef}
-  style={style}
-  className={`border-none bg-muted ${variants({
-    dragging: isOverlay ? "overlay" : isDragging ? "over" : undefined,
-  })}`}
->
-
+      ref={setNodeRef}
+      style={style}
+      className={`border-none bg-muted ${variants({
+        dragging: isOverlay ? "overlay" : isDragging ? "over" : undefined,
+      })}`}
+    >
       <CardHeader className="p-4 font-semibold text-left flex flex-row space-between items-center">
         <Button
           variant={"ghost"}
@@ -119,7 +115,7 @@ export function BoardContainer({ children }: { children: React.ReactNode }) {
           active: "snap-none",
         },
       },
-    },
+    }
   );
 
   return (

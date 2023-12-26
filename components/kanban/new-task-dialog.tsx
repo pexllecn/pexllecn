@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "../ui/textarea";
-
 import { useTaskStore } from "@/lib/store";
 
 export default function NewTaskDialog() {
@@ -32,9 +31,7 @@ export default function NewTaskDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button size="sm">
-          ＋ Add New Todo
-        </Button>
+        <Button size="sm">＋ Add New Todo</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

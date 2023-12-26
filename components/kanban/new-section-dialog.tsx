@@ -10,7 +10,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-
 import { useTaskStore } from "@/lib/store";
 
 export default function NewSectionDialog() {

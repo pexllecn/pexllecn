@@ -1,7 +1,6 @@
 "use client";
 import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-
 import { BoardColumn, BoardContainer } from "./board-column";
 import {
   DndContext,
@@ -72,7 +71,7 @@ export function KanbanBoard() {
 
   const sensors = useSensors(
     useSensor(MouseSensor),
-    useSensor(TouchSensor),
+    useSensor(TouchSensor)
     // useSensor(KeyboardSensor, {
     //   coordinateGetter: coordinateGetter,
     // }),
@@ -111,7 +110,7 @@ export function KanbanBoard() {
         pickedUpTaskColumn.current = active.data.current.task.status;
         const { tasksInColumn, taskPosition, column } = getDraggingTaskData(
           active.id,
-          pickedUpTaskColumn.current,
+          pickedUpTaskColumn.current
         );
         return `Picked up Task ${active.data.current.task.title} at position: ${
           taskPosition + 1
@@ -135,7 +134,7 @@ export function KanbanBoard() {
       ) {
         const { tasksInColumn, taskPosition, column } = getDraggingTaskData(
           over.id,
-          over.data.current.task.status,
+          over.data.current.task.status
         );
         if (over.data.current.task.status !== pickedUpTaskColumn.current) {
           return `Task ${
@@ -171,7 +170,7 @@ export function KanbanBoard() {
       ) {
         const { tasksInColumn, taskPosition, column } = getDraggingTaskData(
           over.id,
-          over.data.current.task.status,
+          over.data.current.task.status
         );
         if (over.data.current.task.status !== pickedUpTaskColumn.current) {
           return `Task was dropped into column ${column?.title} in position ${
@@ -232,7 +231,7 @@ export function KanbanBoard() {
             )}
             {activeTask && <TaskCard task={activeTask} isOverlay />}
           </DragOverlay>,
-          document.body,
+          document.body
         )}
     </DndContext>
   );

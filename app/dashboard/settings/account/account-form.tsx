@@ -1,21 +1,20 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { CalendarIcon, CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
-import { format } from "date-fns"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
-
-import { cn } from "@/lib/utils"
-import { Button } from "@/registry/new-york/ui/button"
-import { Calendar } from "@/registry/new-york/ui/calendar"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { CalendarIcon, CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
+import { format } from "date-fns";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import { cn } from "@/lib/utils";
+import { Button } from "@/registry/new-york/ui/button";
+import { Calendar } from "@/registry/new-york/ui/calendar";
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
-} from "@/registry/new-york/ui/command"
+} from "@/registry/new-york/ui/command";
 import {
   Form,
   FormControl,
@@ -24,14 +23,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/registry/new-york/ui/form"
-import { Input } from "@/registry/new-york/ui/input"
+} from "@/registry/new-york/ui/form";
+import { Input } from "@/registry/new-york/ui/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/new-york/ui/popover"
-import { toast } from "@/registry/new-york/ui/use-toast"
+} from "@/registry/new-york/ui/popover";
+import { toast } from "@/registry/new-york/ui/use-toast";
 
 const languages = [
   { label: "English", value: "en" },
@@ -43,7 +42,7 @@ const languages = [
   { label: "Japanese", value: "ja" },
   { label: "Korean", value: "ko" },
   { label: "Chinese", value: "zh" },
-] as const
+] as const;
 
 const accountFormSchema = z.object({
   name: z
@@ -60,21 +59,21 @@ const accountFormSchema = z.object({
   language: z.string({
     required_error: "Please select a language.",
   }),
-})
+});
 
-type AccountFormValues = z.infer<typeof accountFormSchema>
+type AccountFormValues = z.infer<typeof accountFormSchema>;
 
 // This can come from your database or API.
 const defaultValues: Partial<AccountFormValues> = {
   // name: "Your name",
   // dob: new Date("2023-01-23"),
-}
+};
 
 export function AccountForm() {
   const form = useForm<AccountFormValues>({
     resolver: zodResolver(accountFormSchema),
     defaultValues,
-  })
+  });
 
   function onSubmit(data: AccountFormValues) {
     toast({
@@ -84,7 +83,7 @@ export function AccountForm() {
           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
-    })
+    });
   }
 
   return (
@@ -187,7 +186,7 @@ export function AccountForm() {
                           value={language.label}
                           key={language.value}
                           onSelect={() => {
-                            form.setValue("language", language.value)
+                            form.setValue("language", language.value);
                           }}
                         >
                           <CheckIcon
@@ -215,5 +214,5 @@ export function AccountForm() {
         <Button type="submit">Update account</Button>
       </form>
     </Form>
-  )
+  );
 }

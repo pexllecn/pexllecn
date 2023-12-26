@@ -2,14 +2,17 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/registry/new-york/ui/avatar"
+} from "@/registry/new-york/ui/avatar";
 
 export function RecentSales() {
   return (
     <div className="space-y-8">
       <div className="flex items-center">
         <Avatar className="h-9 w-9">
-          <AvatarImage src="https://material-kit-pro-react.devias.io/assets/avatars/avatar-marcus-finn.png" alt="Avatar" />
+          <AvatarImage
+            src="https://material-kit-pro-react.devias.io/assets/avatars/avatar-marcus-finn.png"
+            alt="Avatar"
+          />
           <AvatarFallback>OM</AvatarFallback>
         </Avatar>
         <div className="ml-4 space-y-1">
@@ -22,7 +25,10 @@ export function RecentSales() {
       </div>
       <div className="flex items-center">
         <Avatar className="flex h-9 w-9 items-center justify-center space-y-0 border">
-          <AvatarImage src="https://material-kit-pro-react.devias.io/assets/avatars/avatar-fran-perez.png" alt="Avatar" />
+          <AvatarImage
+            src="https://material-kit-pro-react.devias.io/assets/avatars/avatar-fran-perez.png"
+            alt="Avatar"
+          />
           <AvatarFallback>JL</AvatarFallback>
         </Avatar>
         <div className="ml-4 space-y-1">
@@ -33,7 +39,10 @@ export function RecentSales() {
       </div>
       <div className="flex items-center">
         <Avatar className="h-9 w-9">
-          <AvatarImage src="https://material-kit-pro-react.devias.io/assets/avatars/avatar-jie-yan-song.png" alt="Avatar" />
+          <AvatarImage
+            src="https://material-kit-pro-react.devias.io/assets/avatars/avatar-jie-yan-song.png"
+            alt="Avatar"
+          />
           <AvatarFallback>IN</AvatarFallback>
         </Avatar>
         <div className="ml-4 space-y-1">
@@ -46,7 +55,10 @@ export function RecentSales() {
       </div>
       <div className="flex items-center">
         <Avatar className="h-9 w-9">
-          <AvatarImage src="https://material-kit-pro-react.devias.io/assets/avatars/avatar-anika-visser.png" alt="Avatar" />
+          <AvatarImage
+            src="https://material-kit-pro-react.devias.io/assets/avatars/avatar-anika-visser.png"
+            alt="Avatar"
+          />
           <AvatarFallback>WK</AvatarFallback>
         </Avatar>
         <div className="ml-4 space-y-1">
@@ -57,7 +69,10 @@ export function RecentSales() {
       </div>
       <div className="flex items-center">
         <Avatar className="h-9 w-9">
-          <AvatarImage src="https://material-kit-pro-react.devias.io/assets/avatars/avatar-miron-vitold.png" alt="Avatar" />
+          <AvatarImage
+            src="https://material-kit-pro-react.devias.io/assets/avatars/avatar-miron-vitold.png"
+            alt="Avatar"
+          />
           <AvatarFallback>SD</AvatarFallback>
         </Avatar>
         <div className="ml-4 space-y-1">
@@ -67,5 +82,5 @@ export function RecentSales() {
         <div className="ml-auto font-medium">+$39.00</div>
       </div>
     </div>
-  )
+  );
 }
