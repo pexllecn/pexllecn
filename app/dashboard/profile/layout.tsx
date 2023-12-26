@@ -1,10 +1,7 @@
 import { Metadata } from "next";
-import Image from "next/image";
 import BreadCrumb from "@/components/breadcrumb";
 import { Heading } from "@/components/ui/heading";
-
 import { Separator } from "@/registry/new-york/ui/separator";
-import { SidebarNav } from "@/app/dashboard/settings/components/sidebar-nav";
 
 export const metadata: Metadata = {
   title: "Profile",

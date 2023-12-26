@@ -25,7 +25,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
+//import { Checkbox } from "@/components/ui/checkbox";
 // import FileUpload from "@/components/FileUpload";
 import { useToast } from "../ui/use-toast";
 const ImgSchema = z.object({
@@ -166,9 +166,7 @@ export const EmployeeForm: React.FC<ProductFormProps> = ({
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Images</FormLabel>
-                <FormControl>
-                  
-                </FormControl>
+                <FormControl></FormControl>
                 <FormMessage />
               </FormItem>
             )}

@@ -1,4 +1,4 @@
-import { NavItem, SidebarNavItem } from "@/types";
+import { NavItem } from "@/types";
 
 
 export type User = {

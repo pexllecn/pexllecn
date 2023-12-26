@@ -9,7 +9,6 @@ import { Button } from "../ui/button";
 import { GripVertical } from "lucide-react";
 import { Task } from "@/lib/store";
 import { ColumnActions } from "./column-action";
-import { Input } from "../ui/input";
 
 export interface Column {
   id: UniqueIdentifier;

@@ -1,14 +1,10 @@
 import Header from "@/components/layout/header";
 import { SiteFooter } from "@/components/site-footer";
-
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
-import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { Icons } from "@/components/icons";
-import { ExamplesNav } from "@/components/examples-nav";
 
 import {
   PageHeader,

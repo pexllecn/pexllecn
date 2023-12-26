@@ -1,5 +1,5 @@
-import { Separator } from "@/registry/new-york/ui/separator"
-import { NotificationsForm } from "@/app/dashboard/settings/notifications/notifications-form"
+import { Separator } from "@/registry/new-york/ui/separator";
+import { NotificationsForm } from "@/app/dashboard/settings/notifications/notifications-form";
 
 export default function SettingsNotificationsPage() {
   return (
@@ -13,5 +13,5 @@ export default function SettingsNotificationsPage() {
       <Separator />
       <NotificationsForm />
     </div>
-  )
+  );
 }

@@ -1,7 +1,6 @@
 "use client";
 import { Plus } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
 import { DataTable } from "@/components/ui/data-table";
 import { columns } from "./columns";
 import { User } from "@/constants/data";

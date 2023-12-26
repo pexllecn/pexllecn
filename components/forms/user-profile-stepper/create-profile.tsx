@@ -31,7 +31,6 @@ import { AlertTriangleIcon, Trash, Trash2Icon } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
-import * as z from "zod";
 
 interface ProfileFormType {
   initialData: any | null;
@@ -243,7 +242,7 @@ export const CreateProfileOne: React.FC<ProfileFormType> = ({
             className={cn(
               currentStep === 1
                 ? "md:inline-block w-full"
-                : "md:grid md:grid-cols-3 gap-8",
+                : "md:grid md:grid-cols-3 gap-8"
             )}
           >
             {currentStep === 0 && (
@@ -398,7 +397,7 @@ export const CreateProfileOne: React.FC<ProfileFormType> = ({
                       <AccordionTrigger
                         className={cn(
                           "[&[data-state=closed]>button]:hidden [&[data-state=open]>.alert]:hidden relative !no-underline",
-                          errors?.jobs?.[index] && "text-red-700",
+                          errors?.jobs?.[index] && "text-red-700"
                         )}
                       >
                         {`Work Experience ${index + 1}`}
@@ -420,7 +419,7 @@ export const CreateProfileOne: React.FC<ProfileFormType> = ({
                       <AccordionContent>
                         <div
                           className={cn(
-                            "md:grid md:grid-cols-3 gap-8 border p-4 rounded-md relative mb-4",
+                            "md:grid md:grid-cols-3 gap-8 border p-4 rounded-md relative mb-4"
                           )}
                         >
                           <FormField
