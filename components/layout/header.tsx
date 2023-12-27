@@ -109,35 +109,23 @@ export default function Header() {
           </nav>
         </div>
 
-        <div className="flex items-center gap-2 hidden md:block">
+        <div className="flex items-center justify-center gap-2 hidden md:flex">
           <CommandMenu />
+
           <Link href={siteConfig.links.github} target="_blank" rel="noreferrer">
-            <div
-              className={cn(
-                buttonVariants({
-                  variant: "ghost",
-                }),
-                "w-9 px-0"
-              )}
-            >
+            <div className="flex items-center justify-center w-9 h-9">
               <Icons.gitHub className="h-4 w-4" />
               <span className="sr-only">GitHub</span>
             </div>
           </Link>
+
           <Link
             href={siteConfig.links.twitter}
             target="_blank"
             rel="noreferrer"
           >
-            <div
-              className={cn(
-                buttonVariants({
-                  variant: "ghost",
-                }),
-                "w-9 px-0"
-              )}
-            >
-              <Icons.twitter className="h-3 w-3 fill-current" />
+            <div className="flex items-center justify-center w-9 h-9">
+              <Icons.twitter className="h-4 w-4" />
               <span className="sr-only">Twitter</span>
             </div>
           </Link>
@@ -145,7 +133,11 @@ export default function Header() {
           <TooltipProvider delayDuration={100}>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button variant="ghost" size="icon">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="flex items-center justify-center w-9 h-9"
+                >
                   <Sun
                     className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
                     onClick={() => setTheme("dark")}
