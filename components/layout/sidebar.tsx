@@ -36,7 +36,7 @@ const LogoSection = ({ logo }: { logo: string }) => (
         <Image
           src={logo}
           alt="Pexlle Logo"
-          className="logo-image"
+          className="logo-image py-2"
           width={150}
           height={50}
         />
