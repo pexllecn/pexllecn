@@ -24,7 +24,7 @@ export default function DashboardLayout({}: {}) {
     <>
       <div className="flex h-screen overflow-hidden">
         <Header />
-        <main className="flex flex-1 justify-center pt-16 overflow-x-hidden overflow-y-auto">
+        <main className="main-background flex flex-1 justify-center pt-16 overflow-x-hidden overflow-y-auto">
           <PageHeader className="pb-8">
             <Link
               href="#"

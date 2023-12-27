@@ -118,3 +118,9 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+.main-background {
+  background-image: url('/back.png');
+  background-size: cover;
+  background-position: center;
+}
