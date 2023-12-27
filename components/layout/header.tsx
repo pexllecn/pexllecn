@@ -37,7 +37,11 @@ export default function Header() {
   }, [theme]);
 
   return (
-    <div className="fixed px-9 top-0 left-0 right-0 supports-backdrop-blur:bg-background/50 border-b border-muted/80 bg-background/60 backdrop-blur z-20">
+    <div
+      className={`fixed xl:px-9 sm:px-0 top-0 left-0 right-0 supports-backdrop-blur:bg-background/50 border-b border-muted/80 bg-background/60 backdrop-blur z-20 ${cn(
+        "hidden md:block"
+      )}`}
+    >
       <nav className="h-14 flex items-center justify-between px-4">
         <div className="hidden md:block">
           {/* Use the logo state for rendering */}
