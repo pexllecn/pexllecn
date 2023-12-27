@@ -1,18 +1,15 @@
 "use client";
-import { DashboardNav } from "@/components/dashboard-nav";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { navItems } from "@/constants/data";
-import { PanelRightClose } from "lucide-react";
 import { useState } from "react";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { PanelRightClose } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
-// import { Playlist } from "../data/playlists";
-
-interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
-  // playlists: Playlist[];
-}
+interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function MainSidebar({ className }: SidebarProps) {
   const [open, setOpen] = useState(false);
+
   return (
     <>
       <Sheet open={open} onOpenChange={setOpen}>
@@ -20,18 +17,47 @@ export function MainSidebar({ className }: SidebarProps) {
           <PanelRightClose />
         </SheetTrigger>
         <SheetContent side="left" className="!px-0">
-          <div className="space-y-4 py-4">
-            <div className="px-3 py-2">
-              <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
-                Khaled
-              </h2>
-              <div className="space-y-1">
-                <DashboardNav
-                  items={navItems}
-                  setOpen={setOpen}
-                  isCollapsed={false}
+          <div className="flex flex-col items-center space-y-4 py-4">
+            {/* Logo with Link */}
+            <Link href="/">
+              <span className="block">
+                <Image
+                  src="/pexlleh.svg"
+                  alt="Logo"
+                  width={150}
+                  height={50}
+                  className="pb-8"
                 />
-              </div>
+              </span>
+            </Link>
+            {/* Navigation Links */}
+            <div className="flex flex-col space-y-5 pl-4">
+              <Link href="/dashboard">
+                <span className="block text-lg font-medium text-center">
+                  Dashboard
+                </span>
+              </Link>
+              <Link href="#">
+                <span className="block text-lg font-medium text-center">
+                  Components
+                </span>
+              </Link>
+              <Link href="#">
+                <span className="block text-lg font-medium text-center">
+                  Themes
+                </span>
+              </Link>
+              <Link href="#">
+                <span className="block text-lg font-medium text-center">
+                  Examples
+                </span>
+              </Link>
+              <Link href="#">
+                <span className="block text-lg font-medium text-center">
+                  Github
+                </span>
+              </Link>
+              {/* Add more links as needed */}
             </div>
           </div>
         </SheetContent>

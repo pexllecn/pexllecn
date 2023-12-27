@@ -4,6 +4,8 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { navItems } from "@/constants/data";
 import { PanelRightClose } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 // import { Playlist } from "../data/playlists";
 
@@ -22,9 +24,15 @@ export function MobileSidebar({ className }: SidebarProps) {
         <SheetContent side="left" className="!px-0">
           <div className="space-y-4 py-4">
             <div className="px-3 py-2">
-              <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
-                Overview
-              </h2>
+              <Link href="/">
+                <Image
+                  src="/pexlleh.svg" // Replace with your logo path
+                  alt="Logo"
+                  width={150} // Adjust the size as needed
+                  height={50}
+                  className="pb-8"
+                />
+              </Link>
               <div className="space-y-1">
                 <DashboardNav
                   items={navItems}
