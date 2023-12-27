@@ -35,7 +35,7 @@ export function MailList({ items }: MailListProps) {
                 <div className="flex items-center gap-2">
                   <div className="font-semibold">{item.name}</div>
                   {!item.read && (
-                    <span className="flex h-2 w-2 rounded-full bg-lime-400" />
+                    <span className="flex h-2 w-2 rounded-full bg-[#50e3c1]" />
                   )}
                 </div>
                 <div

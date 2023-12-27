@@ -62,7 +62,7 @@ export function DashboardNav({
                 {isCollapsed
                   ? null
                   : item.tag && (
-                      <span className="text-element ml-auto bg-[#79ffe1] text-black text-xs px-2 rounded-md">
+                      <span className="text-element ml-auto bg-[#50e3c1] text-black text-xs px-2 rounded-md">
                         {item.tag}
                       </span>
                     )}
