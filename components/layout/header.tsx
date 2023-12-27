@@ -10,6 +10,7 @@ import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
+import Image from "next/image";
 
 import {
   Tooltip,
@@ -46,7 +47,8 @@ export default function Header() {
         <div className="hidden md:block">
           {/* Use the logo state for rendering */}
           <Link href="/">
-            <img src={logo} className="h-7" />{" "}
+            <Image src={logo} alt="Pexlle Logo" width={150} height={50} />{" "}
+            {/* Adjust width and height as needed */}
           </Link>
         </div>
         <div className={cn("block sm:!hidden")}>

@@ -8,6 +8,7 @@ import { UserNav } from "./user-nav";
 import { Moon, PanelLeftOpen, PanelLeftClose, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
 import {
   Tooltip,
   TooltipContent,
@@ -21,9 +22,25 @@ interface SidebarProps {
 }
 
 const LogoSection = ({ logo }: { logo: string }) => (
-  <div className="logo-container space-y-4 py-4 hidden md:block">
+  <div className="logo-container space-y-4 flex justify-center items-center py-4 hidden md:block">
     <Link href="/">
-      <img src={logo} className="logo-image px-8 py-2" />{" "}
+      <div
+        className="logo-container"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100%",
+        }}
+      >
+        <Image
+          src={logo}
+          alt="Pexlle Logo"
+          className="logo-image py-2"
+          width={150}
+          height={50}
+        />
+      </div>
     </Link>
   </div>
 );
