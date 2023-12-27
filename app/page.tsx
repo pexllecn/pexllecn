@@ -11,7 +11,6 @@ export const metadata: Metadata = {
 export default function DashboardLayout({}: {}) {
   return (
     <>
-      <MainSidebar />
       <div className="flex h-screen overflow-hidden">
         <Header />
         <CenterContent />
