@@ -40,7 +40,7 @@ export function DashboardNav({
             >
               <span
                 className={cn(
-                  "group flex items-center rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-primary/10",
+                  "group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-primary/10",
                   isHome || isActive
                     ? "bg-primary text-primary-foreground shadow font-medium hover:bg-primary/90 rounded-md justify-start"
                     : "transparent",

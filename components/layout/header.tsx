@@ -19,6 +19,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { CommandMenu } from "../command-menu";
+import { MainSidebar } from "./main-sidebar";
 
 export default function Header() {
   const pathname = usePathname();
@@ -41,7 +42,7 @@ export default function Header() {
     <div className="fixed xl:px-9 sm:px-0 top-0 left-0 right-0 supports-backdrop-blur:bg-background/50 border-b border-muted/80 bg-background/60 backdrop-blur z-20">
       <nav className="h-14 flex items-center justify-between px-4">
         <div className={cn("block sm:!hidden")}>
-          
+          <MainSidebar />
         </div>
         <div className="">
           {/* Use the logo state for rendering */}
@@ -51,60 +52,62 @@ export default function Header() {
           </Link>
         </div>
 
-        <nav className="hidden md:block flex items-center space-x-6 text-sm font-medium">
-          <Link
-            href="/dashboard"
-            className={cn(
-              "transition-colors hover:text-foreground/80",
-              pathname === "/dashboard"
-                ? "text-foreground"
-                : "text-foreground/60"
-            )}
-          >
-            Dashboard
-          </Link>
-          <Link
-            href="#"
-            className={cn(
-              "transition-colors hover:text-foreground/80",
-              pathname?.startsWith("/docs/components")
-                ? "text-foreground"
-                : "text-foreground/60"
-            )}
-          >
-            Components
-          </Link>
-          <Link
-            href="#"
-            className={cn(
-              "transition-colors hover:text-foreground/80",
-              pathname?.startsWith("/themes")
-                ? "text-foreground"
-                : "text-foreground/60"
-            )}
-          >
-            Themes
-          </Link>
-          <Link
-            href="#"
-            className={cn(
-              "transition-colors hover:text-foreground/80",
-              pathname?.startsWith("/examples")
-                ? "text-foreground"
-                : "text-foreground/60"
-            )}
-          >
-            Examples
-          </Link>
-          <Link
-            href={"#"}
-            className={cn(
-              "hidden text-foreground/60 transition-colors hover:text-foreground/80 lg:block"
-            )}
-          >
-            GitHub
-          </Link>
-        </nav>
+        <div className="hidden sm:block flex justify-center">
+          <nav className="flex items-center space-x-6 text-sm font-medium">
+            <Link
+              href="/dashboard"
+              className={cn(
+                "transition-colors hover:text-foreground/80",
+                pathname === "/dashboard"
+                  ? "text-foreground"
+                  : "text-foreground/60"
+              )}
+            >
+              Dashboard
+            </Link>
+            <Link
+              href="#"
+              className={cn(
+                "transition-colors hover:text-foreground/80",
+                pathname?.startsWith("/docs/components")
+                  ? "text-foreground"
+                  : "text-foreground/60"
+              )}
+            >
+              Components
+            </Link>
+            <Link
+              href="#"
+              className={cn(
+                "transition-colors hover:text-foreground/80",
+                pathname?.startsWith("/themes")
+                  ? "text-foreground"
+                  : "text-foreground/60"
+              )}
+            >
+              Themes
+            </Link>
+            <Link
+              href="#"
+              className={cn(
+                "transition-colors hover:text-foreground/80",
+                pathname?.startsWith("/examples")
+                  ? "text-foreground"
+                  : "text-foreground/60"
+              )}
+            >
+              Examples
+            </Link>
+            <Link
+              href={"#"}
+              className={cn(
+                "hidden text-foreground/60 transition-colors hover:text-foreground/80 lg:block"
+              )}
+            >
+              GitHub
+            </Link>
+          </nav>
+        </div>
 
         <div className="flex items-center gap-2 hidden md:block">
           <CommandMenu />
