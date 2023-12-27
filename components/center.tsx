@@ -28,10 +28,9 @@ export function CenterContent() {
           website Beautifully.
         </span>
         <span className="max-w-[750px] text-lg text-center text-muted-foreground">
-          Beautifully designed components that you can copy and paste into your
-          apps. Accessible. Customizable. Open Source. Beautifully designed
-          components that you can copy and paste into your apps. Accessible.
-          Customizable. Open Source.
+          My aim is to start a journey where we build beautiful looking
+          websites, Shadcn provided the best components so far, Vercel made it
+          easier than ever to deploy your project. Let the journey start!.
         </span>
 
         <div className="flex space-x-4 pb-8 pt-4 md:pb-10">
