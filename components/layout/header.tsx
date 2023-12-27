@@ -41,7 +41,7 @@ export default function Header() {
     <div className="fixed xl:px-9 sm:px-0 top-0 left-0 right-0 supports-backdrop-blur:bg-background/50 border-b border-muted/80 bg-background/60 backdrop-blur z-20">
       <nav className="h-14 flex items-center justify-between px-4">
         <div className={cn("block sm:!hidden")}>
-          <MainSidebar />
+          
         </div>
         <div className="">
           {/* Use the logo state for rendering */}
