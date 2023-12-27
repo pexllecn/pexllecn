@@ -38,24 +38,20 @@ export default function Header() {
   }, [theme]);
 
   return (
-    <div
-      className={`fixed xl:px-9 sm:px-0 top-0 left-0 right-0 supports-backdrop-blur:bg-background/50 border-b border-muted/80 bg-background/60 backdrop-blur z-20 ${cn(
-        "hidden md:block"
-      )}`}
-    >
+    <div className="fixed xl:px-9 sm:px-0 top-0 left-0 right-0 supports-backdrop-blur:bg-background/50 border-b border-muted/80 bg-background/60 backdrop-blur z-20">
       <nav className="h-14 flex items-center justify-between px-4">
-        <div className="hidden md:block">
+        <div className={cn("block sm:!hidden")}>
+          <MobileSidebar />
+        </div>
+        <div className="">
           {/* Use the logo state for rendering */}
           <Link href="/">
             <Image src={logo} alt="Pexlle Logo" width={150} height={50} />{" "}
             {/* Adjust width and height as needed */}
           </Link>
         </div>
-        <div className={cn("block sm:!hidden")}>
-          <MobileSidebar />
-        </div>
 
-        <nav className="flex items-center space-x-6 text-sm font-medium">
+        <nav className="hidden md:block flex items-center space-x-6 text-sm font-medium">
           <Link
             href="/dashboard"
             className={cn(
@@ -110,7 +106,7 @@ export default function Header() {
           </Link>
         </nav>
 
-        <div className="flex items-center gap-2 ">
+        <div className="flex items-center gap-2 hidden md:block">
           <CommandMenu />
           <Link href={siteConfig.links.github} target="_blank" rel="noreferrer">
             <div
