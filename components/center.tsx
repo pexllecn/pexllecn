@@ -21,19 +21,42 @@ export function CenterContent() {
             Introducing you to new Pexlle.
           </span>
         </Link>
-        <span className="text-center text-5xl font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]">
+        <span
+          style={{
+            opacity: 0,
+            transform: "translateY(20px)",
+            animation: "fadeUp 1s ease-out 0.25s forwards",
+          }}
+          className="text-center text-5xl font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]"
+        >
           <span className="text-gradient_indigo-purple font-bold">
             Build your {""}
           </span>
           website Beautifully.
         </span>
-        <span className="max-w-[750px] text-lg text-center text-muted-foreground">
+
+        <span
+          style={{
+            opacity: 0,
+            transform: "translateY(20px)",
+            animation: "fadeUp 1s ease-out 0.35s forwards",
+          }}
+          className="max-w-[750px] text-lg text-center text-muted-foreground"
+        >
           My aim is to start a journey where we build beautiful looking
           websites, Shadcn provided the best components so far, Vercel made it
           easier than ever to deploy your project. Let the journey start!.
         </span>
 
-        <div className="flex space-x-4 pb-8 pt-4 md:pb-10">
+        <div
+          style={{
+            opacity: 0,
+            transform: "translateY(20px)",
+            animation: "fadeUp 1s ease-out 0.40s forwards",
+          }}
+          className="flex space-x-4 pb-8 pt-4 md:pb-10"
+        >
+          {" "}
           <Link href="/dashboard" className={cn(buttonVariants())}>
             Get Started
           </Link>
@@ -46,11 +69,18 @@ export function CenterContent() {
             GitHub
           </Link>
         </div>
-        <div className="container mt-28 mb-32">
+        <div
+          style={{
+            opacity: 0,
+            transform: "translateY(20px)",
+            animation: "fadeUp 1s ease-out 0.55s forwards",
+          }}
+          className="container mt-28 mb-32"
+        >
+          {" "}
           <h2 className="text-zinc-500 text-center text-sm font-semibold uppercase">
             Powered by
           </h2>
-
           <div className="text-zinc-500 my-7 flex flex-wrap items-center justify-center gap-10 gap-y-8 lg:gap-14">
             {features.map((feature) => (
               <Link
