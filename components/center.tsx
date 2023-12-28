@@ -12,6 +12,11 @@ export function CenterContent() {
     <main className="main-background flex flex-1 justify-center pt-16 overflow-x-hidden overflow-y-auto">
       <PageHeader className="pb-8">
         <Link
+          style={{
+            opacity: 0,
+            transform: "translateY(-20px)",
+            animation: "fadeDown 2s ease-out 0.75s forwards",
+          }}
           href="#"
           className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium"
         >
@@ -21,11 +26,12 @@ export function CenterContent() {
             Introducing you to new Pexlle.
           </span>
         </Link>
+
         <span
           style={{
             opacity: 0,
             transform: "translateY(20px)",
-            animation: "fadeUp 1s ease-out 0.25s forwards",
+            animation: "fadeUp 2s ease-out 0.25s forwards",
           }}
           className="text-center text-5xl font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]"
         >
@@ -39,7 +45,7 @@ export function CenterContent() {
           style={{
             opacity: 0,
             transform: "translateY(20px)",
-            animation: "fadeUp 1s ease-out 0.35s forwards",
+            animation: "fadeUp 2s ease-out 0.35s forwards",
           }}
           className="max-w-[750px] text-lg text-center text-muted-foreground"
         >
@@ -52,7 +58,7 @@ export function CenterContent() {
           style={{
             opacity: 0,
             transform: "translateY(20px)",
-            animation: "fadeUp 1s ease-out 0.40s forwards",
+            animation: "fadeUp 2s ease-out 0.40s forwards",
           }}
           className="flex space-x-4 pb-8 pt-4 md:pb-10"
         >
@@ -73,7 +79,7 @@ export function CenterContent() {
           style={{
             opacity: 0,
             transform: "translateY(20px)",
-            animation: "fadeUp 1s ease-out 0.55s forwards",
+            animation: "fadeUp 2s ease-out 0.55s forwards",
           }}
           className="container mt-28 mb-32"
         >
