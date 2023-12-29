@@ -105,7 +105,7 @@ export default function Header() {
           </nav>
         </div>
 
-        <div className="flex items-center justify-center gap-2 hidden md:flex">
+        <div className="flex items-center justify-center hidden md:flex">
           <CommandMenu />
 
           <Link href={siteConfig.links.github} target="_blank" rel="noreferrer">
@@ -137,10 +137,12 @@ export default function Header() {
                   <Sun
                     className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
                     onClick={() => setTheme("dark")}
+                    strokeWidth={1}
                   />
                   <Moon
                     className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
                     onClick={() => setTheme("light")}
+                    strokeWidth={1}
                   />
                 </Button>
               </TooltipTrigger>

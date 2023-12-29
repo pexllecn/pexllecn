@@ -86,7 +86,7 @@ export function CenterContent() {
           className="flex space-x-4 pb-8 pt-4 md:pb-10"
         >
           {" "}
-          <Link href="/dashboard" className={cn(buttonVariants())}>
+          <Link href="/signin" className={cn(buttonVariants())}>
             Get Started
           </Link>
           <Link
