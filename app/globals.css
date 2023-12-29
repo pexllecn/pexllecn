@@ -126,14 +126,6 @@
   background-clip: text;
 }
 
-
-
-.main-background {
-  background-image: url('/back.png');
-  background-size: cover;
-  background-position: center;
-}
-
 @keyframes fadeUp {
   from {
     opacity: 0;

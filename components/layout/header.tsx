@@ -1,17 +1,14 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { MobileSidebar } from "./mobile-sidebar";
-import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import Image from "next/image";
-
+import React, { useEffect, useState } from "react";
 import {
   Tooltip,
   TooltipContent,
@@ -23,7 +20,6 @@ import { MainSidebar } from "./main-sidebar";
 
 export default function Header() {
   const pathname = usePathname();
-
   const { theme, setTheme } = useTheme();
   const [logo, setLogo] = React.useState("/pexlleh.svg"); // Initialize logo state with dark logo
 
@@ -125,7 +121,7 @@ export default function Header() {
             rel="noreferrer"
           >
             <div className="flex items-center justify-center w-9 h-9">
-              <Icons.twitter className="h-4 w-4" />
+              <Icons.twitter className="h-3 w-3 fill-current" />
               <span className="sr-only">Twitter</span>
             </div>
           </Link>

@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Icons } from "@/components/icons";
@@ -6,10 +7,22 @@ import { Separator } from "@/registry/new-york/ui/separator";
 import { PageHeader } from "@/components/page-header";
 import { SiteFooter } from "@/components/site-footer";
 import * as React from "react";
+import { useTheme } from "next-themes";
 
 export function CenterContent() {
+  const { theme } = useTheme();
+  const backgroundImage = theme === "dark" ? "/dark.png" : "/back.png";
+
   return (
-    <main className="main-background flex flex-1 justify-center pt-16 overflow-x-hidden overflow-y-auto">
+    <main
+      className="flex flex-1 justify-center pt-16 overflow-x-hidden overflow-y-auto"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "cover", // Cover the entire area of the container
+        backgroundRepeat: "no-repeat", // Prevent the image from repeating
+        backgroundPosition: "center", // Center the image within the container
+      }}
+    >
       <PageHeader className="pb-8">
         <Link
           style={{
