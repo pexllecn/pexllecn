@@ -10,7 +10,7 @@ export function RecentSales() {
       <div className="flex items-center">
         <Avatar className="h-9 w-9">
           <AvatarImage
-            src="https://material-kit-pro-react.devias.io/assets/avatars/avatar-marcus-finn.png"
+            src="https://material-kit-pro-react.devias.io/assets/avatars/avatar-alcides-antonio.png"
             alt="Avatar"
           />
           <AvatarFallback>OM</AvatarFallback>
@@ -26,7 +26,7 @@ export function RecentSales() {
       <div className="flex items-center">
         <Avatar className="flex h-9 w-9 items-center justify-center space-y-0 border">
           <AvatarImage
-            src="https://material-kit-pro-react.devias.io/assets/avatars/avatar-fran-perez.png"
+            src="https://material-kit-pro-react.devias.io/assets/avatars/avatar-iulia-albu.png"
             alt="Avatar"
           />
           <AvatarFallback>JL</AvatarFallback>

@@ -119,6 +119,15 @@
   background-clip: text;
 }
 
+.text-gradient_metalic {
+  background: linear-gradient(to bottom, rgb(152 152 152 / 70%) 20%, rgb(0 0 0));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+
 .main-background {
   background-image: url('/back.png');
   background-size: cover;
