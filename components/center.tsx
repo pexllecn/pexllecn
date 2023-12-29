@@ -6,21 +6,31 @@ import { buttonVariants } from "@/registry/new-york/ui/button";
 import { Separator } from "@/registry/new-york/ui/separator";
 import { PageHeader } from "@/components/page-header";
 import { SiteFooter } from "@/components/site-footer";
-import * as React from "react";
 import { useTheme } from "next-themes";
+import React, { useEffect, useState } from "react";
 
 export function CenterContent() {
   const { theme } = useTheme();
-  const backgroundImage = theme === "dark" ? "/dark.png" : "/back.png";
+  const [backgroundImage, setBackgroundImage] = useState("/back.png");
+
+  useEffect(() => {
+    const effectiveTheme = theme === "system" ? "system" : theme;
+
+    if (effectiveTheme === "light") {
+      setBackgroundImage("/back.png"); // Path for the light theme background
+    } else {
+      setBackgroundImage("/dark.png"); // Path for the dark theme background
+    }
+  }, [theme]);
 
   return (
     <main
       className="flex flex-1 justify-center pt-16 overflow-x-hidden overflow-y-auto"
       style={{
         backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: "cover", // Cover the entire area of the container
-        backgroundRepeat: "no-repeat", // Prevent the image from repeating
-        backgroundPosition: "center", // Center the image within the container
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
       }}
     >
       <PageHeader className="pb-8">
