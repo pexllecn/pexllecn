@@ -165,27 +165,27 @@ export default function AdDetailsPage() {
             {/* Buttons */}
             <div className="flex justify-between items-center">
               <Button className="text-sm">Contact Seller</Button>
-              <div className="flex space-x-2">
+              <div className="flex">
                 <Button
                   size="icon"
-                  variant="outline"
+                  variant="ghost"
                   className="text-sm py-1 px-2"
                 >
-                  <Heart />
+                  <Heart strokeWidth={1} />
                 </Button>
                 <Button
                   size="icon"
-                  variant="outline"
+                  variant="ghost"
                   className="text-sm py-1 px-2"
                 >
-                  <Flag />
+                  <Flag strokeWidth={1} />
                 </Button>
                 <Button
                   size="icon"
-                  variant="outline"
+                  variant="ghost"
                   className="text-sm py-1 px-2"
                 >
-                  <Share />
+                  <Share strokeWidth={1} />
                 </Button>
               </div>
             </div>
