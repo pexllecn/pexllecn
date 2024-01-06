@@ -144,7 +144,6 @@ export const navItems: NavItem[] = [
     href: "/dashboard/kanban",
     icon: "kanban",
     label: "kanban",
-    tag: "New",
   },
   {
     title: "Inbox",
@@ -154,6 +153,12 @@ export const navItems: NavItem[] = [
     count: 5, // Example count
   },
   {
+    title: "Ad Details",
+    href: "/dashboard/addetails",
+    icon: "kanban",
+    label: "addetails",
+    tag: "New",
+  },{
     title: "Settings",
     href: "/dashboard/settings",
     icon: "settings",

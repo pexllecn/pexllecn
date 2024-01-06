@@ -147,3 +147,14 @@
     transform: translateY(0);
   }
 }
+
+.responsive-img {
+  max-width: 100%;
+  height: auto;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}

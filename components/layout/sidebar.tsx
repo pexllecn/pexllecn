@@ -22,7 +22,7 @@ interface SidebarProps {
 }
 
 const LogoSection = ({ logo }: { logo: string }) => (
-  <div className="logo-container space-y-4 flex justify-center items-center py-4 hidden md:block">
+  <div className="logo-container space-y-4 flex justify-center items-center py-4 md:block">
     <Link href="/">
       <div
         className="logo-container"
@@ -97,7 +97,7 @@ const FooterSection = ({
       </Tooltip>
     </TooltipProvider>
 
-    <TooltipProvider delayDuration={100}>
+    <TooltipProvider delayDuration={50}>
       <Tooltip>
         <TooltipTrigger asChild>
           <Button
@@ -151,7 +151,7 @@ export default function Sidebar({ className }: SidebarProps) {
         <LogoSection logo={logo} />
         <UserInfoSection isCollapsed={isCollapsed} />
         <NavigationSection />
-        <div className=" flex justify-center items-center gap-2 py-6 justify-center align-center bottom-0">
+        <div className=" flex items-center gap-2 py-6 justify-center align-center bottom-0">
           <FooterSection
             theme={theme}
             setTheme={setTheme}
