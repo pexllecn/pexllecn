@@ -81,7 +81,7 @@ export default function AdDetailsPage() {
           {" "}
           <div className="flex flex-col h-full">
             {/* Breadcrumb with Blurred Background */}
-            <div className="backdrop-blur bg-white/10">
+            <div className="backdrop-blur bg-background/10">
               <div className="space-y-4 pl-8 pt-8">
                 <BreadCrumb items={breadcrumbItems} />
               </div>
