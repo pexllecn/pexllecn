@@ -152,7 +152,7 @@ export default function AdDetailsPage() {
         <ResizablePanel
           defaultSize={50}
           className="md:w-1/3 w-full h-full overflow-y-auto"
-          style={{ maxWidth: "400px", marginTop: 0 }}
+          style={{ maxWidth: "350px", marginTop: 0 }}
         >
           <div className="bg-muted p-8 h-full overflow-y-auto flex flex-col space-y-4">
             {/* Title */}
