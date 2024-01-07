@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ResizablePanelGroup, ResizablePanel } from "@/components/ui/resizable";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { Heart, Flag, Share } from "lucide-react";
+import { Heart, Flag, Share, Star } from "lucide-react";
 import Link from "next/link";
 import BreadCrumb from "@/components/breadcrumb";
 import { Separator } from "@/components/ui/separator";
@@ -225,6 +225,20 @@ export default function AdDetailsPage() {
                   <p className="text-muted-foreground text-xs">
                     Joined: April 2023
                   </p>
+                  {/* Seller Rating */}
+                  <div className="flex items-center">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className="text-yellow-400"
+                        size={16}
+                        fill="currentColor"
+                      />
+                    ))}
+                    <span className="text-xs text-gray-600 ml-2">(4.8)</span>
+                  </div>
+                  {/* Additional Details */}
+                  <p className="text-xs">Response Rate: 98%</p>
                 </div>
               </div>
             </div>
