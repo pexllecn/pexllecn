@@ -151,10 +151,10 @@ export default function AdDetailsPage() {
         {/* Sidebar Panel */}
         <ResizablePanel
           defaultSize={50}
-          className="md:w-1/3 w-full h-full overflow-y-auto"
+          className="p-4 md:w-1/3 w-full h-full overflow-y-auto"
           style={{ maxWidth: "350px", marginTop: 0 }}
         >
-          <div className="bg-muted p-8 h-full overflow-y-auto flex flex-col space-y-4">
+          <div className="rounded-3xl bg-muted p-8 h-full overflow-y-auto flex flex-col space-y-4">
             {/* Title */}
             <h1 className="font-bold text-2xl">Apple iMac 27-inch</h1>
             <span className="text-xs" style={{ marginTop: 0 }}>

@@ -79,7 +79,7 @@ const FooterSection = ({
   isCollapsed: boolean;
   toggleCollapse: Function;
 }) => (
-  <footer className="absolute bottom-0 px-3 py-2">
+  <footer className="absolute bottom-0 px-3 py-6">
     <TooltipProvider delayDuration={100}>
       <Tooltip>
         <TooltipTrigger asChild>
@@ -112,10 +112,7 @@ const FooterSection = ({
             variant="ghost"
           >
             {isCollapsed ? (
-              <PanelLeftOpen
-                className="h-[1.2rem] w-[1.2rem]"
-                strokeWidth={1}
-              />
+              <PanelLeftOpen className="" strokeWidth={1} />
             ) : (
               <PanelLeftClose
                 className="h-[1.2rem] w-[1.2rem]"
@@ -155,11 +152,11 @@ export default function Sidebar({ className }: SidebarProps) {
 
   return (
     <div
-      className={`p-4 sidebar flex flex-col h-full border bg-muted ${className} ${
+      className={`p-4 sidebar flex flex-col h-full ${className} ${
         isCollapsed ? "collapsed" : ""
       }`}
     >
-      <div className=" flex flex-col flex-grow overflow-auto">
+      <div className="p-1 flex h-full rounded-3xl flex bg-muted flex-col flex-grow overflow-auto">
         <LogoSection logo={logo} />
         <UserInfoSection isCollapsed={isCollapsed} />
         <NavigationSection />
