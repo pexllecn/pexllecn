@@ -5,6 +5,7 @@ import { RecentSales } from "@/components/recent-sales";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { motion } from "framer-motion";
 import { toast } from "sonner";
 import {
   Card,
@@ -26,7 +27,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function page() {
   return (
-    <>
+    <motion.div
+      initial={{ x: -100, opacity: 0 }} // start from the left and invisible
+      animate={{ x: 0, opacity: 1 }} // end at its original position and fully visible
+      transition={{
+        duration: 0.2, // Control the duration of the animation
+        ease: "easeOut", // Use an easing function for a smooth effect
+      }}
+    >
       <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
         <div className="flex items-center justify-between space-y-2">
           <h2 className="text-3xl font-bold tracking-tight">
@@ -247,6 +255,6 @@ export default function page() {
           </TabsContent>
         </Tabs>
       </div>
-    </>
+    </motion.div>
   );
 }

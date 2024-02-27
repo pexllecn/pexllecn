@@ -50,6 +50,7 @@
     "date-fns": "^3.0.6",
     "embla-carousel-react": "^8.0.0-rc17",
     "fontsource-montserrat": "^4.0.0",
+    "framer-motion": "^11.0.6",
     "geist": "^1.2.0",
     "jotai": "^2.6.0",
     "js-cookie": "^3.0.5",
