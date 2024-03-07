@@ -155,8 +155,13 @@ export const navItems: NavItem[] = [
   {
     title: "Ad Details",
     href: "/dashboard/addetails",
-    icon: "kanban",
+    icon: "addetails",
     label: "addetails",
+  },{
+    title: "Pricing",
+    href: "/dashboard/pricing",
+    icon: "pricing",
+    label: "pricing",
     tag: "New",
   },{
     title: "Settings",
