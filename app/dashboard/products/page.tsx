@@ -13,7 +13,7 @@ export default function page() {
     <motion.div
       initial="hidden"
       animate="visible"
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.25 }}
       variants={variants1}
     >
       <div className="flex-1 space-y-4  p-4 md:p-8 pt-6">
