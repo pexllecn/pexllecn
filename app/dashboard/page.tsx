@@ -8,12 +8,12 @@ export default function SparklesPreview() {
   const { theme = "light", setTheme } = useTheme(); // Default to 'light' if theme is undefined
 
   // Determine particle color based on theme
-  const particleColor = theme === "light" ? "#000000" : "#FFFFFF";
+  const particleColor = theme === "light" ? "#000000" : "#FFFF00";
 
   // Variants for motion.h1, assuming you've defined them elsewhere
   const variants1 = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
+    hidden: { filter: "blur(10px)", opacity: 0 },
+    visible: { filter: "blur(0px)", opacity: 1 },
   };
 
   return (

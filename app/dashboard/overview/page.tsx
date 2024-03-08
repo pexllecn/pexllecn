@@ -27,14 +27,16 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function page() {
+  const variants1 = {
+    hidden: { filter: "blur(10px)", opacity: 0 },
+    visible: { filter: "blur(0px)", opacity: 1 },
+  };
   return (
     <motion.div
-      initial={{ x: -100, opacity: 0 }} // start from the left and invisible
-      animate={{ x: 0, opacity: 1 }} // end at its original position and fully visible
-      transition={{
-        duration: 0.2, // Control the duration of the animation
-        ease: "easeOut", // Use an easing function for a smooth effect
-      }}
+      initial="hidden"
+      animate="visible"
+      transition={{ duration: 0.3 }}
+      variants={variants1}
     >
       <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
         <div className="flex items-center justify-between space-y-2">
