@@ -32,7 +32,7 @@ export default function SparklesPreview() {
       <motion.h1
         initial="hidden"
         animate="visible"
-        transition={{ duration: 1.3 }}
+        transition={{ duration: 1 }}
         variants={variants1}
         className="text-center font-display text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]"
       >
