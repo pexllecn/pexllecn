@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 
 export default function SparklesPreview() {
-  const { theme = "light", setTheme } = useTheme(); // Default to 'light' if theme is undefined
+  const { theme = "dark", setTheme } = useTheme(); // Default to 'light' if theme is undefined
 
   // Determine particle color based on theme
-  const particleColor = theme === "light" ? "#000000" : "#FFFFFF";
+  const particleColor = theme === "dark" ? "#FFFFFF" : "#000000";
 
   // Variants for motion.h1, assuming you've defined them elsewhere
   const variants1 = {
@@ -20,7 +20,7 @@ export default function SparklesPreview() {
     <div className="relative h-full w-full flex flex-col items-center justify-center">
       <div className="w-full relative inset-0 h-screen">
         <SparklesCore
-          id="tsparticlesfullpage"
+          //id="tsparticlesfullpage"
           background="transparent"
           minSize={0.6}
           maxSize={1.4}
