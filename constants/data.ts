@@ -120,12 +120,6 @@ export const navItems: NavItem[] = [
     href: "/dashboard",
     icon: "home",
     label: "home",
-    tag: "New",
-  },{
-    title: "Overview",
-    href: "/dashboard/overview",
-    icon: "dashb",
-    label: "overview",
   },
   {
     title: "User",
@@ -163,6 +157,12 @@ export const navItems: NavItem[] = [
     href: "/dashboard/addetails",
     icon: "addetails",
     label: "addetails",
+  },{
+    title: "Pricing",
+    href: "/dashboard/pricing",
+    icon: "pricing",
+    label: "pricing",
+    tag: "New",
   },{
     title: "Settings",
     href: "/dashboard/settings",
