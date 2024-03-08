@@ -17,8 +17,8 @@ export default function SparklesPreview() {
   };
 
   return (
-    <div className="relative h-full w-full flex flex-col items-center justify-center overflow-hidden">
-      <div className="w-full absolute inset-0 h-screen">
+    <div className="relative h-full w-full flex flex-col items-center justify-center">
+      <div className="w-full relative inset-0 h-screen">
         <SparklesCore
           id="tsparticlesfullpage"
           background="transparent"
@@ -30,11 +30,9 @@ export default function SparklesPreview() {
         />
       </div>
       <motion.h1
-        initial="hidden"
-        animate="visible"
         transition={{ duration: 1 }}
         variants={variants1}
-        className="text-center font-display text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]"
+        className="absolute text-center font-display text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]"
       >
         Welcome to Pexllecn
       </motion.h1>
