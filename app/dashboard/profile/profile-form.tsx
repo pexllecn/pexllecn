@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useFieldArray, useForm } from "react-hook-form"
-import * as z from "zod"
+import Link from "next/link";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useFieldArray, useForm } from "react-hook-form";
+import * as z from "zod";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/registry/new-york/ui/button"
+import { cn } from "@/lib/utils";
+import { Button } from "@/registry/new-york/ui/button";
 import {
   Form,
   FormControl,
@@ -15,17 +15,17 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/registry/new-york/ui/form"
-import { Input } from "@/registry/new-york/ui/input"
+} from "@/registry/new-york/ui/form";
+import { Input } from "@/registry/new-york/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/new-york/ui/select"
-import { Textarea } from "@/registry/new-york/ui/textarea"
-import { toast } from "@/registry/new-york/ui/use-toast"
+} from "@/registry/new-york/ui/select";
+import { Textarea } from "@/registry/new-york/ui/textarea";
+import { toast } from "@/registry/new-york/ui/use-toast";
 
 const profileFormSchema = z.object({
   username: z
@@ -49,9 +49,9 @@ const profileFormSchema = z.object({
       })
     )
     .optional(),
-})
+});
 
-type ProfileFormValues = z.infer<typeof profileFormSchema>
+type ProfileFormValues = z.infer<typeof profileFormSchema>;
 
 // This can come from your database or API.
 const defaultValues: Partial<ProfileFormValues> = {
@@ -60,19 +60,19 @@ const defaultValues: Partial<ProfileFormValues> = {
     { value: "https://pexlle.com" },
     { value: "http://twitter.com/pexlle" },
   ],
-}
+};
 
 export function ProfileForm() {
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
     defaultValues,
     mode: "onChange",
-  })
+  });
 
   const { fields, append } = useFieldArray({
     name: "urls",
     control: form.control,
-  })
+  });
 
   function onSubmit(data: ProfileFormValues) {
     toast({
@@ -82,7 +82,7 @@ export function ProfileForm() {
           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
-    })
+    });
   }
 
   return (
@@ -187,5 +187,5 @@ export function ProfileForm() {
         <Button type="submit">Update profile</Button>
       </form>
     </Form>
-  )
+  );
 }

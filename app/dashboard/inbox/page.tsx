@@ -1,9 +1,9 @@
-"use client"
-import { useEffect, useState } from 'react';
-import Image from "next/image"
-
-import { Mail } from "@/components/mail"
-import { accounts, mails } from "@/app/data"
+"use client";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { Mail } from "@/components/mail";
+import { accounts, mails } from "@/app/data";
 
 export default function MailPage() {
   const [defaultLayout, setDefaultLayout] = useState(undefined);
@@ -16,15 +16,16 @@ export default function MailPage() {
       if (parts.length === 2) {
         const lastPart = parts.pop();
         if (lastPart !== undefined) {
-          return lastPart.split(';').shift();
+          return lastPart.split(";").shift();
         }
       }
       return undefined;
     };
-    
 
     const layoutCookieValue = getCookieValue("react-resizable-panels:layout");
-    const collapsedCookieValue = getCookieValue("react-resizable-panels:collapsed");
+    const collapsedCookieValue = getCookieValue(
+      "react-resizable-panels:collapsed"
+    );
 
     console.log("layout cookie value:", layoutCookieValue);
     console.log("collapsed cookie value:", collapsedCookieValue);
@@ -42,8 +43,18 @@ export default function MailPage() {
     setDefaultCollapsed(parseCookieValue(collapsedCookieValue));
   }, []);
 
+  const variants1 = {
+    hidden: { filter: "blur(10px)", opacity: 0 },
+    visible: { filter: "blur(0px)", opacity: 1 },
+  };
+
   return (
-    <>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      transition={{ duration: 0.25 }}
+      variants={variants1}
+    >
       <div className="md:hidden">
         <Image
           src="/examples/mail-dark.png"
@@ -69,6 +80,6 @@ export default function MailPage() {
           navCollapsedSize={4}
         />
       </div>
-    </>
-  )
+    </motion.div>
+  );
 }

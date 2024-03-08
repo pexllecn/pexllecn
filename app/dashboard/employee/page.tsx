@@ -1,3 +1,4 @@
+"use client";
 import BreadCrumb from "@/components/breadcrumb";
 import { columns } from "@/components/tables/employee-tables/columns";
 import { EmployeeTable } from "@/components/tables/employee-tables/employee-table";
@@ -8,6 +9,7 @@ import { Employee } from "@/constants/data";
 import { cn } from "@/lib/utils";
 import { Plus } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const breadcrumbItems = [{ title: "Employees", link: "/dashboard/employee" }];
 
@@ -25,7 +27,7 @@ export default async function page({ searchParams }: paramsProps) {
 
   const res = await fetch(
     `https://api.slingacademy.com/v1/sample-data/users?offset=${offset}&limit=${pageLimit}` +
-      (country ? `&search=${country}` : ""),
+      (country ? `&search=${country}` : "")
   );
   const employeeRes = await res.json();
   console.log("employeeRes", employeeRes);
@@ -33,8 +35,17 @@ export default async function page({ searchParams }: paramsProps) {
   const pageCount = Math.ceil(totalUsers / pageLimit);
   const employee: Employee[] = employeeRes.users;
   console.log("employee", employee);
+  const variants1 = {
+    hidden: { filter: "blur(10px)", opacity: 0 },
+    visible: { filter: "blur(0px)", opacity: 1 },
+  };
   return (
-    <>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      transition={{ duration: 0.25 }}
+      variants={variants1}
+    >
       <div className="flex-1 space-y-4  p-4 md:p-8 pt-6">
         <BreadCrumb items={breadcrumbItems} />
 
@@ -46,7 +57,7 @@ export default async function page({ searchParams }: paramsProps) {
 
           <Link
             href={"/dashboard/employee/new"}
-            className={cn(buttonVariants({ variant: "default" , size:"sm"  }))}
+            className={cn(buttonVariants({ variant: "default", size: "sm" }))}
           >
             <Plus className="mr-2 h-4 w-4" /> Add New
           </Link>
@@ -61,6 +72,6 @@ export default async function page({ searchParams }: paramsProps) {
           pageCount={pageCount}
         />
       </div>
-    </>
+    </motion.div>
   );
 }
