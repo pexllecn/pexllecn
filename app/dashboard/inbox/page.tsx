@@ -1,16 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-<<<<<<< HEAD
 
-import { Input } from "@/components/ui/input";
+import { Search } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PlusIcon } from "@radix-ui/react-icons";
-=======
-import Image from "next/image";
-
-import { Mail } from "@/components/mail";
-import { accounts, mails } from "@/app/data";
->>>>>>> e05f838c43527d130aad01a393c3d4a56610c0c4
 
 export default function MailPage() {
   const [defaultLayout, setDefaultLayout] = useState(undefined);
@@ -57,27 +50,55 @@ export default function MailPage() {
           <h2 className="text-2xl font-semibold">Chats</h2>
           <PlusIcon className="h-6 w-6 text-foreground" />
         </div>
-        <Input placeholder="Search" className="mt-8 mb-6" />
+        <Search placeholder="Search" className="mt-8 mb-6" />
         <Tabs>
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="account">Chat</TabsTrigger>
             <TabsTrigger value="password">Call</TabsTrigger>
           </TabsList>
         </Tabs>
+        <div className="mt-6">
+          {[...Array(10)].map((_, index) => (
+            <ChatCard key={index} />
+          ))}
+        </div>
       </div>
-<<<<<<< HEAD
     </div>
-=======
-      <div className="hidden flex-col md:flex">
-        <Mail
-          accounts={accounts}
-          mails={mails}
-          defaultLayout={defaultLayout}
-          defaultCollapsed={defaultCollapsed}
-          navCollapsedSize={4}
-        />
+  );
+}
+
+function ChatCard() {
+  // just for demo
+  const randomBoolean = () => Math.random() < 0.5;
+  const showNotification = randomBoolean();
+
+  return (
+    <div className="w-full flex px-2 items-center py-4 hover:bg-muted">
+      <img
+        src="/profile.avif"
+        alt="avater"
+        className="rounded-full w-11 h-11 object-cover"
+      />
+      <div className="w-full px-3 flex flex-col gap-[1px]">
+        <div className="flex justify-between w-full items-center">
+          <h3 className="text-md font-semibold">Cody Fisher</h3>
+          <p className="text-muted-foreground text-[13px]">11:30</p>
+        </div>
+        <div className="flex justify-between w-full items-center">
+          <h3
+            className={`text-sm text-muted-foreground truncate ${
+              showNotification ? "w-[200px]" : "w-[240px]"
+            }`}
+          >
+            Hey there! I have heard about Primoieoav
+          </h3>
+          {showNotification && (
+            <span className="bg-black h-4 w-4 ml-3 text-white flex flex-col items-center justify-center rounded-full text-[12px] font-thin pb-[1px]">
+              2
+            </span>
+          )}
+        </div>
       </div>
-    </>
->>>>>>> e05f838c43527d130aad01a393c3d4a56610c0c4
+    </div>
   );
 }
