@@ -35,6 +35,8 @@ import {
   Inbox,
   ShoppingCart,
   DollarSign,
+  LayoutDashboard,
+  PackageSearch,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -70,6 +72,8 @@ export const Icons = {
   inbox: Inbox,
   pricing: DollarSign,
   addetails: ShoppingCart,
+  dashb: LayoutDashboard,
+  prods: PackageSearch,
   twitter: (props: IconProps) => (
     <svg
       {...props}

@@ -6,7 +6,7 @@ import { Separator } from "@/registry/new-york/ui/separator";
 import { SidebarNav } from "@/app/dashboard/settings/components/sidebar-nav";
 
 export const metadata: Metadata = {
-  title: "Forms",
+  title: "Settings",
   description: "Advanced form example using react-hook-form and Zod.",
 };
 

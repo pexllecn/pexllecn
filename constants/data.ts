@@ -120,8 +120,30 @@ export const navItems: NavItem[] = [
     href: "/dashboard",
     icon: "home",
     label: "home",
+  },{
+    title: "Overview",
+    href: "/dashboard/overview",
+    icon: "dashb",
+    label: "overview",
   },
   {
+    title: "Products",
+    href: "/dashboard/products",
+    icon: "prods",
+    label: "products",
+    tag: "New",
+  },{
+    title: "Ad Details",
+    href: "/dashboard/addetails",
+    icon: "addetails",
+    label: "addetails",
+  },{
+    title: "Inbox",
+    href: "/dashboard/inbox",
+    icon: "inbox",
+    label: "Inbox",
+    count: 5, // Example count
+  },{
     title: "User",
     href: "/dashboard/user",
     icon: "user",
@@ -146,24 +168,6 @@ export const navItems: NavItem[] = [
     label: "kanban",
   },
   {
-    title: "Inbox",
-    href: "/dashboard/inbox",
-    icon: "inbox",
-    label: "Inbox",
-    count: 5, // Example count
-  },
-  {
-    title: "Ad Details",
-    href: "/dashboard/addetails",
-    icon: "addetails",
-    label: "addetails",
-  },{
-    title: "Pricing",
-    href: "/dashboard/pricing",
-    icon: "pricing",
-    label: "pricing",
-    tag: "New",
-  },{
     title: "Settings",
     href: "/dashboard/settings",
     icon: "settings",

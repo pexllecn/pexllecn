@@ -25,7 +25,7 @@ export default async function page({ searchParams }: paramsProps) {
 
   const res = await fetch(
     `https://api.slingacademy.com/v1/sample-data/users?offset=${offset}&limit=${pageLimit}` +
-      (country ? `&search=${country}` : ""),
+      (country ? `&search=${country}` : "")
   );
   const employeeRes = await res.json();
   console.log("employeeRes", employeeRes);
@@ -46,7 +46,7 @@ export default async function page({ searchParams }: paramsProps) {
 
           <Link
             href={"/dashboard/employee/new"}
-            className={cn(buttonVariants({ variant: "default" , size:"sm"  }))}
+            className={cn(buttonVariants({ variant: "default", size: "sm" }))}
           >
             <Plus className="mr-2 h-4 w-4" /> Add New
           </Link>

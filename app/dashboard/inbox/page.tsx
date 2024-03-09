@@ -1,9 +1,16 @@
 "use client";
 import { useEffect, useState } from "react";
+<<<<<<< HEAD
 
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PlusIcon } from "@radix-ui/react-icons";
+=======
+import Image from "next/image";
+
+import { Mail } from "@/components/mail";
+import { accounts, mails } from "@/app/data";
+>>>>>>> e05f838c43527d130aad01a393c3d4a56610c0c4
 
 export default function MailPage() {
   const [defaultLayout, setDefaultLayout] = useState(undefined);
@@ -58,6 +65,19 @@ export default function MailPage() {
           </TabsList>
         </Tabs>
       </div>
+<<<<<<< HEAD
     </div>
+=======
+      <div className="hidden flex-col md:flex">
+        <Mail
+          accounts={accounts}
+          mails={mails}
+          defaultLayout={defaultLayout}
+          defaultCollapsed={defaultCollapsed}
+          navCollapsedSize={4}
+        />
+      </div>
+    </>
+>>>>>>> e05f838c43527d130aad01a393c3d4a56610c0c4
   );
 }
