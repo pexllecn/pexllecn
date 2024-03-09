@@ -1,9 +1,9 @@
-"use client"
-import { useEffect, useState } from 'react';
-import Image from "next/image"
+"use client";
+import { useEffect, useState } from "react";
 
-import { Mail } from "@/components/mail"
-import { accounts, mails } from "@/app/data"
+import { Input } from "@/components/ui/input";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { PlusIcon } from "@radix-ui/react-icons";
 
 export default function MailPage() {
   const [defaultLayout, setDefaultLayout] = useState(undefined);
@@ -16,15 +16,16 @@ export default function MailPage() {
       if (parts.length === 2) {
         const lastPart = parts.pop();
         if (lastPart !== undefined) {
-          return lastPart.split(';').shift();
+          return lastPart.split(";").shift();
         }
       }
       return undefined;
     };
-    
 
     const layoutCookieValue = getCookieValue("react-resizable-panels:layout");
-    const collapsedCookieValue = getCookieValue("react-resizable-panels:collapsed");
+    const collapsedCookieValue = getCookieValue(
+      "react-resizable-panels:collapsed"
+    );
 
     console.log("layout cookie value:", layoutCookieValue);
     console.log("collapsed cookie value:", collapsedCookieValue);
@@ -43,32 +44,20 @@ export default function MailPage() {
   }, []);
 
   return (
-    <>
-      <div className="md:hidden">
-        <Image
-          src="/examples/mail-dark.png"
-          width={1280}
-          height={727}
-          alt="Mail"
-          className="hidden dark:block"
-        />
-        <Image
-          src="/examples/mail-light.png"
-          width={1280}
-          height={727}
-          alt="Mail"
-          className="block dark:hidden"
-        />
+    <div className="flex flex-col border m-6 h-full rounded-xl">
+      <div className="w-[350px] h-full border-r p-4">
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl font-semibold">Chats</h2>
+          <PlusIcon className="h-6 w-6 text-foreground" />
+        </div>
+        <Input placeholder="Search" className="mt-8 mb-6" />
+        <Tabs>
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="account">Chat</TabsTrigger>
+            <TabsTrigger value="password">Call</TabsTrigger>
+          </TabsList>
+        </Tabs>
       </div>
-      <div className="hidden flex-col md:flex">
-        <Mail
-          accounts={accounts}
-          mails={mails}
-          defaultLayout={defaultLayout}
-          defaultCollapsed={defaultCollapsed}
-          navCollapsedSize={4}
-        />
-      </div>
-    </>
-  )
+    </div>
+  );
 }
