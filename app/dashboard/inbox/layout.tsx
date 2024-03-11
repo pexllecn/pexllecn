@@ -4,8 +4,8 @@ import { Search } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PlusIcon } from "@radix-ui/react-icons";
-import { ChatCard } from "./components/chat-card";
 import { usePathname } from "next/navigation";
+import { ChatCard } from "./components/chat-card";
 
 export default function InboxPageLayout({
   children,

@@ -14,8 +14,8 @@ export default function InboxPage() {
   return (
     <div className="w-full flex lg:w-[78%]">
       <div
-        className={`flex-col h-full lg:border-r transition-all duration-500 ${
-          showInfo ? "lg:w-3/5 hidden lg:flex" : "lg:w-full w-full flex"
+        className={`flex-col h-full lg:border-r transition-all duration-500 ease-in-out ${
+          showInfo ? "lg:w-4/6 hidden lg:flex" : "lg:w-full w-full flex"
         }`}
       >
         <div className="flex items-center w-full border-b py-4 px-4">
@@ -53,9 +53,9 @@ export default function InboxPage() {
         </div>
       </div>
       <div
-        className={`lg:flex lg:flex-col transition-transform duration-500 ease-in-out ${
+        className={`lg:flex lg:flex-col transition-all duration-500 ease-in-out ${
           showInfo
-            ? "translate-x-0 lg:w-2/5 w-full flex"
+            ? "translate-x-0 lg:w-2/6 w-full flex"
             : "translate-x-full lg:w-0 w-0 hidden"
         }`}
       >
