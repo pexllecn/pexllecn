@@ -53,7 +53,7 @@ export function MediaTabs() {
           />
         </div>
       </TabsContent>
-      <TabsContent value="links"></TabsContent>
+      {/* <TabsContent value="links"></TabsContent> */}
     </Tabs>
   );
 }

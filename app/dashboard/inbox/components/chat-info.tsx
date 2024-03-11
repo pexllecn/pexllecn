@@ -41,7 +41,7 @@ export function ChatInfo() {
             <Info className="w-5 h-5 text-muted-foreground" />
           </Button>
         </div>
-        <div className="flex flex-col gap-4 w-full py-8 px-6">
+        <div className="flex flex-col gap-4 w-full py-8 px-4 lg:px-8">
           <SettingEntry icon={Bell} title="Notifications">
             <Switch />
           </SettingEntry>
@@ -52,7 +52,7 @@ export function ChatInfo() {
             <Switch />
           </SettingEntry>
         </div>
-        <div className="px-6">
+        <div className="px-4 lg:px-8">
           <p className="font-semibold">Members</p>
           <div className="flex flex-col w-full my-4">
             {[...Array(5)].map((_, index) => (
