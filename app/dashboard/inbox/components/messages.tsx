@@ -1,6 +1,7 @@
 "use client";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { OnlineStatusAvatar } from "./online-status-avatar";
 
 export function Messages() {
   const messages = [
@@ -53,22 +54,14 @@ export function Messages() {
         {messages.map((message, index) =>
           message.name === "Me" ? (
             <div className="flex gap-4 flex-row-reverse ml-auto" key={index}>
-              <img
-                src="/profile.avif"
-                alt="avatar"
-                className="rounded-full w-9 h-9 object-cover"
-              />
+              <OnlineStatusAvatar status="green" className="size-9" />
               <div className="py-2 px-4 bg-black text-white dark:bg-white dark:text-black rounded-md max-w-[200px] sm:max-w-[400px]">
                 <p>{message.message}</p>
               </div>
             </div>
           ) : (
             <div className="flex gap-4" key={index}>
-              <img
-                src="/profile.avif"
-                alt="avatar"
-                className="rounded-full w-9 h-9 object-cover"
-              />
+              <OnlineStatusAvatar status="green" className="size-9" />
               <div className="py-2 px-4 bg-muted/80 rounded-md max-w-[200px] sm:max-w-[400px]">
                 <p>{message.message}</p>
                 {message!.image && (

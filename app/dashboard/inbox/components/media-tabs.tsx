@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export function MediaTabs() {
   return (
-    <Tabs defaultValue="media" className="w-[400px]">
+    <Tabs defaultValue="media" className="w-full">
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="media">Media</TabsTrigger>
         <TabsTrigger value="links">Links</TabsTrigger>

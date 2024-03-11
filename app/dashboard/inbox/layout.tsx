@@ -17,7 +17,7 @@ export default function InboxPageLayout({
   return (
     <div className="flex border h-full rounded-xl">
       <div
-        className={`w-full lg:w-1/5 h-full lg:border-r ${
+        className={`w-full lg:w-[22%] h-full lg:border-r ${
           pathname === "/dashboard/inbox" ? "flex" : "hidden lg:flex"
         } flex-col`}
       >
