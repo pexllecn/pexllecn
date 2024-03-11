@@ -11,7 +11,7 @@ import { Messages } from "../components/messages";
 export default function InboxPage() {
   return (
     <>
-      <div className={`w-full lg:w-[55%] flex-col h-full border-r flex`}>
+      <div className={`w-full lg:w-[55%] flex-col h-full lg:border-r flex`}>
         <div className="flex items-center w-full border-b py-4 px-4">
           <Avatar className="size-12">
             <AvatarImage src="/profile.avif" alt="avatar" />
@@ -30,9 +30,9 @@ export default function InboxPage() {
           </div>
         </div>
         <Messages />
-        <div className="flex px-6 align-bottom my-4 bottom-0">
-          <div className="flex gap-4 w-full items-center">
-            <Button size="icon" className="rounded-lg size-8">
+        <div className="flex px-2 lg:px-6 align-bottom my-4 bottom-0">
+          <div className="flex gap-2 lg:gap-4 w-full items-center">
+            <Button size="icon" className="rounded-lg">
               <Plus className="size-4" />
             </Button>
             <Input placeholder="Type a message" className="w-full" />

@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 import { Phone, Plus, SearchIcon } from "lucide-react";
-import { usePathname } from "next/navigation";
 import { ChatInfo } from "./components/chat-info";
 import { Messages } from "./components/messages";
 
