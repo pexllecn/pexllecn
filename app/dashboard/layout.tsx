@@ -16,18 +16,18 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <div className="h-full ">
       <div className={cn("p-5 block sm:!hidden")}>
         <MobileSidebar />
       </div>
-      <div className="flex h-screen overflow-hidden">
+      <div className="flex h-full overflow-hidden max-h-screen">
         <Sidebar className="w-64 hidden md:block" />
-        <main className="flex-1 overflow-x-hidden overflow-y-auto ">
+        <main className="flex-1 overflow-x-hidden h-full p-2">
           {children}
           <Toaster richColors />
           <SpeedInsights />
         </main>
       </div>
-    </>
+    </div>
   );
 }

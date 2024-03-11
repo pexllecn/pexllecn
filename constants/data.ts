@@ -120,7 +120,6 @@ export const navItems: NavItem[] = [
     href: "/dashboard",
     icon: "home",
     label: "home",
-    tag: "New",
   },{
     title: "Overview",
     href: "/dashboard/overview",
@@ -138,6 +137,12 @@ export const navItems: NavItem[] = [
     href: "/dashboard/addetails",
     icon: "addetails",
     label: "addetails",
+  },{
+    title: "Chat",
+    href: "/dashboard/chat",
+    icon: "chat",
+    label: "Chat",
+    tag: "New", // Example count
   },{
     title: "Inbox",
     href: "/dashboard/inbox",
