@@ -15,10 +15,10 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="h-full">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased overflow-hidden"
+          "h-full bg-background font-sans antialiased"
         )}
       >
         <ThemeProvider

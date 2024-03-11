@@ -4,21 +4,15 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Info, Phone, Plus, SearchIcon } from "lucide-react";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { ChatInfo } from "./components/chat-info";
-import { Messages } from "./components/messages";
+import { ChatInfo } from "../components/chat-info";
+import { Messages } from "../components/messages";
 
 export default function InboxPage() {
   const [showInfo, setShowInfo] = useState(false);
-  const pathname = usePathname();
 
   return (
-    <div
-      className={`w-full ${
-        pathname !== "/dashboard/inbox" ? "" : "hidden lg:flex lg:w-[78%]"
-      }`}
-    >
+    <div className="w-full flex lg:w-[78%]">
       <div
         className={`flex-col h-full lg:border-r transition-all duration-500 ease-in-out ${
           showInfo ? "lg:w-4/6 hidden lg:flex" : "lg:w-full w-full flex"
