@@ -29,7 +29,7 @@ export default function ChatPage() {
             <AvatarImage src="/profile.avif" alt="avatar" />
           </Avatar>
           <div className="flex flex-col ml-4">
-            <h3 className="text-sm font-semibold">PrimeTek Team</h3>
+            <h3 className="text-sm font-semibold">Pexllecn Team</h3>
             <p className="text-muted-foreground text-xs w-auto lg:w-auto">
               Ahmed, Ali, Umar, Hassan, Aqib, Zain, Saad, Aashir, Abdullah,
               Junaid

@@ -21,7 +21,7 @@ export function ChatCard() {
       <OnlineStatusAvatar status={status} />
       <div className="w-full px-3 flex flex-col gap-[1px]">
         <div className="flex justify-between w-full items-center">
-          <h3 className="text-sm font-semibold">Cody Fisher</h3>
+          <h3 className="text-sm font-semibold">Kay Pexlle</h3>
           <p className="text-muted-foreground text-[13px]">11:30</p>
         </div>
         <div className="flex items-center">

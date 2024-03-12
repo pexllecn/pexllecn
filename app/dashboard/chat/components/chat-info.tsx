@@ -23,8 +23,8 @@ export function ChatInfo() {
         <Avatar className="size-20">
           <AvatarImage src="/profile.avif" alt="avatar" />
         </Avatar>
-        <h3 className="text-lg font-semibold mt-4">PrimeTek Team</h3>
-        <p className="text-muted-foreground text-sm">@primetek-team</p>
+        <h3 className="text-lg font-semibold mt-4">pexllecn Team</h3>
+        <p className="text-muted-foreground text-sm">@pexllecn-team</p>
       </div>
       <div className="flex items-center w-full gap-4 justify-center">
         <Button size="icon" variant="ghost">
@@ -63,7 +63,7 @@ export function ChatInfo() {
                 <AvatarImage src="/profile.avif" alt="avatar" />
               </Avatar>
               <div className="flex flex-col">
-                <h3 className="text-xs font-semibold">Cody Fisher</h3>
+                <h3 className="text-xs font-semibold">Kay Pexlle</h3>
               </div>
             </div>
           ))}

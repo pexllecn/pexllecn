@@ -11,12 +11,12 @@ export function Messages() {
       message: "PrimeVue rocks! Simplifies UI dev with versatile components.",
     },
     {
-      name: "PrimeTek Team",
+      name: "pexllecn Team",
       image: null,
       message: "Intriguing! Tell us more about its impact.",
     },
     {
-      name: "PrimeTek Team",
+      name: "pexllecn Team",
       message:
         "Diverse content - software, AI, cybersecurity, mobile tech, and more. Ideal for all skill levels!",
       image: "/sample.jpeg",
@@ -27,17 +27,17 @@ export function Messages() {
       message: "Customizable themes, responsive design - UI excellence!",
     },
     {
-      name: "PrimeTek Team",
+      name: "pexllecn Team",
       image: null,
       message: "Love it! Fast-tracking our development is key.",
     },
     {
-      name: "PrimeTek Team",
+      name: "pexllecn Team",
       image: null,
       message: "Documentation rocks too - smooth integration for all.",
     },
     {
-      name: "PrimeTek Team",
+      name: "pexllecn Team",
       image: null,
       message: "Documentation rocks too - smooth integration for all.",
     },
