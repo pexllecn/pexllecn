@@ -24,7 +24,7 @@ export function ChatInfo() {
           <AvatarImage src="/profile.avif" alt="avatar" />
         </Avatar>
         <h3 className="text-lg font-semibold mt-4">PrimeTek Team</h3>
-        <p className="text-muted-foreground text-md">@primetek-team</p>
+        <p className="text-muted-foreground text-sm">@primetek-team</p>
       </div>
       <div className="flex items-center w-full gap-4 justify-center">
         <Button size="icon" variant="ghost">
@@ -63,7 +63,7 @@ export function ChatInfo() {
                 <AvatarImage src="/profile.avif" alt="avatar" />
               </Avatar>
               <div className="flex flex-col">
-                <h3 className="text-sm font-semibold">Cody Fisher</h3>
+                <h3 className="text-xs font-semibold">Cody Fisher</h3>
               </div>
             </div>
           ))}
@@ -88,7 +88,7 @@ function SettingEntry({
   return (
     <div className="flex gap-2 items-center w-full">
       <Icon className="size-5" />
-      <p className="text-md font-semibold mr-auto">{title}</p>
+      <p className="text-sm font-semibold mr-auto">{title}</p>
       <div className="">{children}</div>
     </div>
   );

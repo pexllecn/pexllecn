@@ -21,12 +21,12 @@ export function ChatCard() {
       <OnlineStatusAvatar status={status} />
       <div className="w-full px-3 flex flex-col gap-[1px]">
         <div className="flex justify-between w-full items-center">
-          <h3 className="text-md font-semibold">Cody Fisher</h3>
+          <h3 className="text-sm font-semibold">Cody Fisher</h3>
           <p className="text-muted-foreground text-[13px]">11:30</p>
         </div>
         <div className="flex items-center">
           <h3
-            className={`flex-grow text-sm text-muted-foreground truncate w-[100px] md:[200px]`}
+            className={`flex-grow text-xs text-muted-foreground truncate w-[100px] md:[200px]`}
           >
             Hey there! I have heard about Primoieoav
           </h3>

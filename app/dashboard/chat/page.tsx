@@ -29,8 +29,8 @@ export default function ChatPage() {
             <AvatarImage src="/profile.avif" alt="avatar" />
           </Avatar>
           <div className="flex flex-col ml-4">
-            <h3 className="text-md font-semibold">PrimeTek Team</h3>
-            <p className="text-muted-foreground text-sm w-auto lg:w-auto">
+            <h3 className="text-sm font-semibold">PrimeTek Team</h3>
+            <p className="text-muted-foreground text-xs w-auto lg:w-auto">
               Ahmed, Ali, Umar, Hassan, Aqib, Zain, Saad, Aashir, Abdullah,
               Junaid
             </p>

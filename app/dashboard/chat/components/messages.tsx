@@ -50,7 +50,7 @@ export function Messages() {
 
   return (
     <ScrollArea className="flex-grow">
-      <div className="w-full flex flex-col gap-8 p-4 h-full">
+      <div className="text-sm w-full flex flex-col gap-8 p-4 h-full">
         {messages.map((message, index) =>
           message.name === "Me" ? (
             <div className="flex gap-4 flex-row-reverse ml-auto" key={index}>
