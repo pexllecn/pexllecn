@@ -277,11 +277,11 @@ export default function page() {
                             <div
                               key={product.productType}
                               className="max-w-md rounded-lg p-1 mb-2 hover:shadow-lg hover:bg-gray-200 overflow-hidden dark:hover:shadow-lg dark:hover:bg-gray-900"
-                              style={{ width: "100%", height: 230 }}
+                              style={{ width: "100%", height: 300 }}
                             >
                               <div
                                 className="relative flex-shrink-0 overflow-hidden"
-                                style={{ width: "100%", height: 150 }}
+                                style={{ width: "100%", height: 200 }}
                               >
                                 <Image
                                   src={product.imagePath}
