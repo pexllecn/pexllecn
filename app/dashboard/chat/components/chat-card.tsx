@@ -31,7 +31,7 @@ export function ChatCard() {
             Hey there! I have heard about Primoieoav
           </h3>
           {showNotification && (
-            <span className="bg-black dark:bg-white dark:text-black h-4 w-4 ml-3 text-white flex items-center justify-center rounded-full text-[12px] font-thin pt-[1px]">
+            <span className="bg-black dark:bg-white dark:text-black h-4 w-4 ml-3 text-white flex items-center justify-center rounded-full text-[10px] font-medium	 pt-[1px]">
               2
             </span>
           )}

@@ -89,26 +89,26 @@ export default function AdDetailsPage() {
 
             <div className="p-5 flex-1 overflow-auto">
               {/* Gallery Grid */}
-              <div className="grid grid-cols-3 gap-4">
-                <div className="grid grid-rows-2 gap-4">
+              <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-rows-2 gap-2">
                   <Image
                     src="/pe4.jpeg"
                     alt="Small Image 1"
-                    className="rounded-2xl w-full h-full"
+                    className="shadow-md border-4 border-white rounded-2xl w-full h-full"
                     width={1260} // Update these values
                     height={750} // Update these values
                   />
                   <Image
                     src="/pe3.png"
                     alt="Small Image 2"
-                    className="rounded-2xl w-full h-full"
+                    className="shadow-md border-4 border-white rounded-2xl w-full h-full"
                     width={1260} // Update these values
                     height={750} // Update these values
                   />
                   <Image
                     src="/pe2.jpeg"
                     alt="Small Image 3"
-                    className="rounded-2xl w-full h-full"
+                    className="shadow-md border-4 border-white rounded-2xl w-full h-full"
                     width={1260} // Update these values
                     height={750} // Update these values
                   />
@@ -118,7 +118,7 @@ export default function AdDetailsPage() {
                   <Image
                     src="/pe1.jpeg"
                     alt="Large Image"
-                    className="rounded-2xl w-full h-full"
+                    className="shadow-md border-4 border-white rounded-2xl w-full h-full"
                     width={1260} // Update these values
                     height={750} // Update these values
                   />
@@ -133,7 +133,7 @@ export default function AdDetailsPage() {
                       <Image
                         src={ad.imageUrl}
                         alt={ad.title}
-                        className="w-full h-40 object-cover rounded-lg"
+                        className="shadow-md border-4 border-white rounded-2xl w-full h-40 object-cover"
                         width={1260} // Using width from your ad data
                         height={750} // Using height from your ad data
                       />
