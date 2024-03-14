@@ -16,7 +16,7 @@ export default function AuthenticationPage() {
           <div
             className="absolute inset-0"
             style={{
-              backgroundImage: 'url("/dark.png")',
+              backgroundImage: 'url("/login.jpeg")',
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
@@ -33,7 +33,7 @@ export default function AuthenticationPage() {
                 }}
               >
                 <Image
-                  src={"/pexllelight.png"}
+                  src={"/pexlle.png"}
                   alt="Pexlle Logo"
                   className="logo-image py-2"
                   width={150}
@@ -45,12 +45,12 @@ export default function AuthenticationPage() {
 
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">
-              <p className="text-lg">
+              <p className="text-lg text-black">
                 &ldquo;This library has saved me countless hours of work and
                 helped me deliver stunning designs to my clients faster than
                 ever before.&rdquo;
               </p>
-              <footer className="text-sm">Sofia Davis</footer>
+              <footer className="text-sm text-black">Sofia Davis</footer>
             </blockquote>
           </div>
         </div>
