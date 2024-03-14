@@ -10,7 +10,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
     <motion.div
       initial="hidden"
       animate="visible"
-      transition={{ duration: 0.25 }}
+      transition={{ duration: 0.2 }}
       variants={variants1}
       className="h-full"
     >
