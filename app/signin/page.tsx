@@ -1,14 +1,24 @@
-import { Metadata } from "next";
+"use client";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import UserAuthForm from "@/components/user-auth-form";
 import Image from "next/image";
-
-export const metadata: Metadata = {
-  title: "Signin",
-  description: "Authentication forms built using the components.",
-};
+import { Moon, Sun } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function AuthenticationPage() {
+  const { theme, setTheme } = useTheme(); // Use the useTheme hook for theme switching
+  const [mounted, setMounted] = useState(false);
+
+  // Ensure we're only accessing theme on the client side
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
   return (
     <>
       <div className="relative h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
@@ -82,6 +92,21 @@ export default function AuthenticationPage() {
               </Link>
               .
             </p>
+            <Button
+              className="self-center mt-10" // Increased top margin for lower positioning
+              variant="outline"
+              size="icon"
+              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            >
+              <Moon
+                className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+                strokeWidth={1}
+              />
+              <Sun
+                className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
+                strokeWidth={1}
+              />
+            </Button>
           </div>
         </div>
       </div>
