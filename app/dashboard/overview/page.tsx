@@ -63,7 +63,7 @@ export default function page() {
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
               <DialogHeader>
-                <DialogTitle>Add New Todo</DialogTitle>
+                <DialogTitle>Confirm</DialogTitle>
                 <DialogDescription>
                   What do you want to get done today?
                 </DialogDescription>
@@ -89,7 +89,7 @@ export default function page() {
               <DialogFooter>
                 <DialogTrigger asChild>
                   <Button type="submit" size="sm" form="todo-form">
-                    Add Todo
+                    Confirm
                   </Button>
                 </DialogTrigger>
               </DialogFooter>
