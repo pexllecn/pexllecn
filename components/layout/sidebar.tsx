@@ -112,7 +112,10 @@ const FooterSection = ({
             variant="ghost"
           >
             {isCollapsed ? (
-              <PanelLeftOpen className="" strokeWidth={1} />
+              <PanelLeftOpen
+                className="h-[1.2rem] w-[1.2rem]"
+                strokeWidth={1}
+              />
             ) : (
               <PanelLeftClose
                 className="h-[1.2rem] w-[1.2rem]"
