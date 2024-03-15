@@ -24,6 +24,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Download } from "lucide-react";
 
 export default function page() {
   const variants1 = {
@@ -55,7 +56,10 @@ export default function page() {
           </Button>
           <Dialog>
             <DialogTrigger asChild>
-              <Button size="sm">Download</Button>
+              <Button size="sm">
+                <Download className="mr-2 h-4 w-4" />
+                Download
+              </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
               <DialogHeader>
