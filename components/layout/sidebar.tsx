@@ -61,10 +61,10 @@ const UserInfoSection = ({ isCollapsed }: { isCollapsed: boolean }) => (
   </div>
 );
 
-const NavigationSection = () => (
+const NavigationSection = ({ isCollapsed }: { isCollapsed: boolean }) => (
   <div className="px-3 py-2">
     <Separator className="mb-4" />
-    <DashboardNav items={navItems} />
+    <DashboardNav items={navItems} isCollapsed={isCollapsed} />
   </div>
 );
 
@@ -162,7 +162,7 @@ export default function Sidebar({ className }: SidebarProps) {
       <div className="flex h-full rounded-3xl bg-muted border flex-col flex-grow overflow-auto">
         <LogoSection logo={logo} />
         <UserInfoSection isCollapsed={isCollapsed} />
-        <NavigationSection />
+        <NavigationSection isCollapsed={isCollapsed} />
         <div className=" flex items-center gap-2 py-6 justify-center align-center bottom-0">
           <FooterSection
             theme={theme}

@@ -21,7 +21,6 @@ export function DashboardNav({
   setOpen,
   isCollapsed,
 }: DashboardNavProps) {
-  // Add isCollapsed here
   const path = usePathname();
 
   if (!items?.length) {
@@ -37,62 +36,53 @@ export function DashboardNav({
           const isActive =
             item.href !== "/dashboard" && path.startsWith(item.href ?? "");
 
-          const navigationItem = (
-            <span
-              className={`group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-primary/10 ${
-                isHome || isActive ? "bg-primary/10" : "transparent"
-              } ${item.disabled && "cursor-not-allowed opacity-80"}`}
+          const link = (
+            <Link
+              key={index}
+              href={item.disabled ? "/" : item.href!} // Use the non-null assertion operator here
+              onClick={() => setOpen?.(false)}
             >
-              <Icon className="icon-element mr-2 h-4 w-4" />
-              {!isCollapsed && item.title}
-            </span>
+              <span
+                className={cn(
+                  "group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-primary/10",
+                  isHome || isActive
+                    ? "bg-primary/10 font-medium hover:bg-primary/10 rounded-md justify-start"
+                    : "transparent",
+                  item.disabled && "cursor-not-allowed opacity-80"
+                )}
+              >
+                <Icon className="icon-element mr-2 h-4 w-4" />
+                {isCollapsed ? null : (
+                  <span className="text-element">{item.title}</span>
+                )}
+                {isCollapsed
+                  ? null
+                  : item.count && (
+                      <span className="text-element ml-auto text-xs font-semibold">
+                        {item.count}
+                      </span>
+                    )}
+                {isCollapsed
+                  ? null
+                  : item.tag && (
+                      <span className="text-element ml-auto bg-[#50e3c1] text-black text-xs px-2 rounded-md">
+                        {item.tag}
+                      </span>
+                    )}
+              </span>
+            </Link>
           );
 
           return (
-            item.href && (
+            item.href &&
+            (isCollapsed ? (
               <Tooltip key={index}>
-                {" "}
-                {/* Conditional disabling based on isCollapsed */}
-                <TooltipTrigger asChild>
-                  <Link
-                    key={index}
-                    href={item.disabled ? "/" : item.href}
-                    onClick={() => setOpen?.(false)}
-                  >
-                    <span
-                      className={cn(
-                        "group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-primary/10",
-                        isHome || isActive
-                          ? "bg-primary/10 font-medium hover:bg-primary/10 rounded-md justify-start"
-                          : "transparent",
-                        item.disabled && "cursor-not-allowed opacity-80"
-                      )}
-                    >
-                      <Icon className="icon-element mr-2 h-4 w-4" />
-                      {isCollapsed ? null : (
-                        <span className="text-element">{item.title}</span>
-                      )}{" "}
-                      {/* Text appears when sidebar is extended */}
-                      {isCollapsed
-                        ? null
-                        : item.count && (
-                            <span className="text-element ml-auto text-xs font-semibold">
-                              {item.count}
-                            </span>
-                          )}
-                      {isCollapsed
-                        ? null
-                        : item.tag && (
-                            <span className="text-element ml-auto bg-[#50e3c1] text-black text-xs px-2 rounded-md">
-                              {item.tag}
-                            </span>
-                          )}
-                    </span>
-                  </Link>
-                </TooltipTrigger>
+                <TooltipTrigger asChild>{link}</TooltipTrigger>
                 <TooltipContent side="right">{item.title}</TooltipContent>
               </Tooltip>
-            )
+            ) : (
+              link
+            ))
           );
         })}
       </nav>
