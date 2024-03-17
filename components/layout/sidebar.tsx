@@ -16,6 +16,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import Link from "next/link";
+import { OnlineStatusAvatar } from "@/app/dashboard/chat/components/online-status-avatar";
 
 interface SidebarProps {
   className?: string;
@@ -79,7 +80,7 @@ const FooterSection = ({
   isCollapsed: boolean;
   toggleCollapse: Function;
 }) => (
-  <footer className="absolute bottom-0 px-3 py-6">
+  <footer className="absolute bottom-0 px-7 py-6">
     <TooltipProvider delayDuration={100}>
       <Tooltip>
         <TooltipTrigger asChild>
@@ -90,7 +91,7 @@ const FooterSection = ({
             onClick={() => setTheme(theme === "light" ? "dark" : "light")}
           >
             <Moon
-              className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+              className=" h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
               strokeWidth={1}
             />
             <Sun

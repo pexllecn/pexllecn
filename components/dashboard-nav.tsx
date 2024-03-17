@@ -44,16 +44,16 @@ export function DashboardNav({
             >
               <span
                 className={cn(
-                  "group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-primary/10",
+                  "text-muted-foreground group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-primary/10",
                   isHome || isActive
-                    ? "bg-primary/10 font-medium hover:bg-primary/10 rounded-md justify-start"
+                    ? "text-primary bg-primary/10 font-black hover:bg-primary/10 rounded-md justify-start"
                     : "transparent",
                   item.disabled && "cursor-not-allowed opacity-80"
                 )}
               >
-                <Icon className="icon-element mr-2 h-4 w-4" />
+                <Icon className="icon-element mr-2 h-5 w-4" />
                 {isCollapsed ? null : (
-                  <span className="text-element">{item.title}</span>
+                  <span className="text-element h-5">{item.title}</span>
                 )}
                 {isCollapsed
                   ? null

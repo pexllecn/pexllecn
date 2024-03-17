@@ -2,6 +2,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,7 +13,13 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-export function UserNav() {
+
+export function UserNav({ status = "green", className = "" }) {
+  const statusColor = {
+    green: "bg-green-400",
+    red: "bg-red-400",
+    yellow: "bg-yellow-400",
+  }[status];
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -21,6 +28,9 @@ export function UserNav() {
             <AvatarImage src="/avatar.jpg" alt="@shadcn" />
             <AvatarFallback>Kay</AvatarFallback>
           </Avatar>
+          <span
+            className={`-bottom-1 -right-[4px] absolute  w-3 h-3 ${statusColor} border-2 border-white dark:border-gray-800 rounded-full`}
+          ></span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="start" forceMount>

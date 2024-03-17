@@ -16,7 +16,7 @@ export function OnlineStatusAvatar({ status = "green", className = "" }) {
         <AvatarImage src="/profile.avif" alt="avatar" />
       </Avatar>
       <span
-        className={`-top-1 -right-[2px] absolute  w-3.5 h-3.5 ${statusColor} border-2 border-white dark:border-gray-800 rounded-full`}
+        className={`-top-0.5 -right-[1px] absolute  w-3 h-3 ${statusColor} border-2 border-white dark:border-gray-800 rounded-full`}
       ></span>
     </div>
   );
