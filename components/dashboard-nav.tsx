@@ -51,9 +51,9 @@ export function DashboardNav({
                   item.disabled && "cursor-not-allowed opacity-80"
                 )}
               >
-                <Icon className="icon-element mr-2 h-5 w-4" />
+                <Icon className="icon-element h-5 w-4" />
                 {isCollapsed ? null : (
-                  <span className="text-element h-5">{item.title}</span>
+                  <span className="text-element ml-2 h-5">{item.title}</span>
                 )}
                 {isCollapsed
                   ? null
