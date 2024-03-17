@@ -46,7 +46,7 @@ export function DashboardNav({
                 className={cn(
                   "text-muted-foreground group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-primary/10",
                   isHome || isActive
-                    ? "text-primary bg-primary/10 font-black hover:bg-primary/10 rounded-md justify-start"
+                    ? "text-secondary bg-primary hover:bg-primary rounded-md justify-start"
                     : "transparent",
                   item.disabled && "cursor-not-allowed opacity-80"
                 )}

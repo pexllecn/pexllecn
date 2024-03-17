@@ -80,7 +80,7 @@ const FooterSection = ({
   isCollapsed: boolean;
   toggleCollapse: Function;
 }) => (
-  <footer className="absolute bottom-0 px-7 py-6">
+  <footer className="absolute bottom-0 pl-[1.85rem] pr-[1.75rem] py-6">
     <TooltipProvider delayDuration={100}>
       <Tooltip>
         <TooltipTrigger asChild>
@@ -91,12 +91,12 @@ const FooterSection = ({
             onClick={() => setTheme(theme === "light" ? "dark" : "light")}
           >
             <Moon
-              className=" h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
-              strokeWidth={1}
+              className="text-muted-foreground h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+              strokeWidth={1.3}
             />
             <Sun
-              className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
-              strokeWidth={1}
+              className="text-muted-foreground absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
+              strokeWidth={1.3}
             />
           </Button>
         </TooltipTrigger>
@@ -114,13 +114,13 @@ const FooterSection = ({
           >
             {isCollapsed ? (
               <PanelLeftOpen
-                className="h-[1.2rem] w-[1.2rem]"
-                strokeWidth={1}
+                className="text-muted-foreground h-[1.2rem] w-[1.2rem]"
+                strokeWidth={1.3}
               />
             ) : (
               <PanelLeftClose
-                className="h-[1.2rem] w-[1.2rem]"
-                strokeWidth={1}
+                className="text-muted-foreground h-[1.2rem] w-[1.2rem]"
+                strokeWidth={1.3}
               />
             )}
           </Button>
@@ -133,7 +133,7 @@ const FooterSection = ({
 
 export default function Sidebar({ className }: SidebarProps) {
   const { theme = "light", setTheme } = useTheme(); // Default to 'light' if theme is undefined
-  const [logo, setLogo] = useState("/pexlleh.svg");
+  const [logo, setLogo] = useState("/pexlleh.png");
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   useEffect(() => {
@@ -151,7 +151,7 @@ export default function Sidebar({ className }: SidebarProps) {
 
   useEffect(() => {
     const effectiveTheme = theme === "system" ? "light" : theme;
-    setLogo(effectiveTheme === "light" ? "/pexlleh.svg" : "/pexllelight.png");
+    setLogo(effectiveTheme === "light" ? "/pexlleh.png" : "/pexllelight.png");
   }, [theme]);
 
   return (
@@ -160,7 +160,7 @@ export default function Sidebar({ className }: SidebarProps) {
         isCollapsed ? "collapsed" : ""
       }`}
     >
-      <div className="flex h-full rounded-3xl bg-muted border flex-col flex-grow overflow-auto">
+      <div className="flex h-full rounded-3xl bg-muted flex-col flex-grow overflow-auto">
         <LogoSection logo={logo} />
         <UserInfoSection isCollapsed={isCollapsed} />
         <NavigationSection isCollapsed={isCollapsed} />
