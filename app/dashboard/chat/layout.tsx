@@ -15,7 +15,7 @@ export default function ChatPageLayout({
   const pathname = usePathname();
 
   return (
-    <div className="flex border h-full rounded-xl">
+    <div className="flex h-full">
       <div
         className={`w-full lg:w-[22%] h-full lg:border-r ${
           pathname === "/dashboard/chat" ? "flex" : "hidden lg:flex"

@@ -18,7 +18,7 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning className="h-full">
       <body
         className={cn(
-          "h-full bg-background font-sans antialiased"
+          "overflow-hidden h-full bg-background font-sans antialiased"
         )}
       >
         <ThemeProvider

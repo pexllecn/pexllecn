@@ -160,7 +160,7 @@ export default function Sidebar({ className }: SidebarProps) {
         isCollapsed ? "collapsed" : ""
       }`}
     >
-      <div className="flex h-full rounded-3xl bg-muted flex-col flex-grow overflow-auto">
+      <div className="flex h-full border-r rounded-3xl bg-muted flex-col flex-grow overflow-auto">
         <LogoSection logo={logo} />
         <UserInfoSection isCollapsed={isCollapsed} />
         <NavigationSection isCollapsed={isCollapsed} />
