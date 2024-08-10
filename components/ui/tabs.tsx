@@ -3,13 +3,20 @@ import * as React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import { cn } from "@/lib/utils";
 
-const TabsContext = React.createContext(null);
+type TabsContextType = {
+  activeTab: string | undefined;
+  setActiveTab: React.Dispatch<React.SetStateAction<string | undefined>>;
+} | null;
+
+const TabsContext = React.createContext<TabsContextType>(null);
 
 const Tabs = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root>
 >(({ className, ...props }, ref) => {
-  const [activeTab, setActiveTab] = React.useState(props.defaultValue);
+  const [activeTab, setActiveTab] = React.useState<string | undefined>(
+    props.defaultValue
+  );
 
   return (
     <TabsContext.Provider value={{ activeTab, setActiveTab }}>
@@ -31,8 +38,9 @@ const TabsList = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
 >(({ className, ...props }, ref) => {
-  const tabsListRef = React.useRef<HTMLDivElement>(null);
-  const { activeTab } = React.useContext(TabsContext);
+  const tabsListRef = React.useRef<HTMLDivElement | null>(null);
+  const context = React.useContext(TabsContext);
+  const activeTab = context ? context.activeTab : undefined;
   const [backgroundStyle, setBackgroundStyle] = React.useState({});
 
   React.useEffect(() => {
@@ -41,7 +49,7 @@ const TabsList = React.forwardRef<
       if (tabsList) {
         const activeTabElement = tabsList.querySelector(
           `[data-state="active"]`
-        );
+        ) as HTMLElement | null;
         if (activeTabElement) {
           setBackgroundStyle({
             width: `${activeTabElement.clientWidth}px`,
@@ -59,13 +67,22 @@ const TabsList = React.forwardRef<
     return () => window.removeEventListener("resize", updateBackground);
   }, [activeTab]);
 
+  // Combine the forwarded ref and our internal ref
+  const combinedRef = React.useCallback(
+    (element: HTMLDivElement | null) => {
+      tabsListRef.current = element;
+      if (typeof ref === "function") {
+        ref(element);
+      } else if (ref) {
+        ref.current = element;
+      }
+    },
+    [ref]
+  );
+
   return (
     <TabsPrimitive.List
-      ref={(el) => {
-        if (typeof ref === "function") ref(el);
-        else if (ref) ref.current = el;
-        tabsListRef.current = el;
-      }}
+      ref={combinedRef}
       className={cn(
         "inline-flex h-10 items-center justify-center rounded-[calc(var(--radius)-0.25rem)] bg-muted p-1 text-muted-foreground relative",
         className
