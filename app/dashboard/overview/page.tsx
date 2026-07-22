@@ -59,11 +59,18 @@ export default function DashboardPage() {
     <>
       <DashboardHeader breadcrumbs={[{ href: "/dashboard", label: "Dashboard" }, { label: "Overview" }]} />
       <div className="flex flex-1 flex-col gap-4 p-4 lg:p-6">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <h1 className="font-heading font-semibold text-2xl tracking-tight">
-            Welcome back 👋
-          </h1>
-          <div className="flex items-center gap-2">
+        <div className="relative flex flex-wrap items-center justify-between gap-3 overflow-hidden rounded-2xl border bg-card p-6 shadow-xs/5 animate-rise">
+          <div
+            aria-hidden="true"
+            className="-right-24 -top-24 absolute size-64 rounded-full accent-gradient opacity-[0.1] blur-2xl"
+          />
+          <div className="relative grid gap-1.5">
+            <span className="text-muted-foreground text-sm">Tuesday, 22 July</span>
+            <h1 className="font-heading font-semibold text-3xl tracking-tight">
+              Welcome back, Khaled 👋
+            </h1>
+          </div>
+          <div className="relative flex items-center gap-2">
             <Button
               onClick={() =>
                 toastManager.add({

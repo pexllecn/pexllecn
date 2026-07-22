@@ -34,12 +34,12 @@ export function CrmShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   return (
-    <div className="flex min-h-svh flex-col">
-      <header className="border-b bg-sidebar">
+    <div className="accent-blue flex min-h-svh flex-col">
+      <header className="glass sticky top-0 z-30 border-b">
         <div className="flex h-14 items-center gap-3 px-4 lg:px-6">
           <Menu>
             <MenuTrigger className="flex cursor-pointer items-center gap-2 rounded-lg p-1 font-medium outline-none transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring">
-              <div className="flex size-7 items-center justify-center rounded-md bg-primary text-primary-foreground">
+              <div className="flex size-7 items-center justify-center rounded-md accent-gradient text-white shadow-xs">
                 <CommandIcon className="size-4" />
               </div>
               Atlas CRM
@@ -83,7 +83,7 @@ export function CrmShell({ children }: { children: React.ReactNode }) {
                 className={cn(
                   "relative whitespace-nowrap px-3 py-2.5 text-muted-foreground text-sm transition-colors hover:text-foreground",
                   pathname === item.href &&
-                    "font-medium text-foreground after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:rounded-full after:bg-primary",
+                    "font-medium text-foreground after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:rounded-full after:bg-[var(--accent-solid)]",
                 )}
                 href={item.href}
                 key={item.href}

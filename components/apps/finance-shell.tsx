@@ -63,7 +63,7 @@ export function FinanceShell({
   const pathname = usePathname();
 
   return (
-    <SidebarProvider>
+    <SidebarProvider className="accent-emerald">
       <Sidebar collapsible="icon" variant="inset">
         <SidebarHeader>
           <SidebarMenu>
@@ -73,7 +73,7 @@ export function FinanceShell({
                 size="lg"
                 className="group-data-[collapsible=icon]:justify-center"
               >
-                <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+                <div className="flex size-8 shrink-0 items-center justify-center rounded-lg accent-gradient text-white shadow-xs">
                   <TrendingUpIcon className="size-4" />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
@@ -142,7 +142,7 @@ export function FinanceShell({
         </SidebarFooter>
       </Sidebar>
       <SidebarInset>
-        <header className="flex h-14 shrink-0 items-center gap-2 px-4 lg:px-6">
+        <header className="glass sticky top-0 z-30 flex h-14 shrink-0 items-center gap-2 rounded-t-xl border-b px-4 lg:px-6">
           <SidebarTrigger className="-ml-1.5" />
           <Separator className="mr-1 h-4" orientation="vertical" />
           <h1 className="font-heading font-semibold text-lg tracking-tight">
