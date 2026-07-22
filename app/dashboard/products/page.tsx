@@ -1,330 +1,191 @@
 "use client";
-import { useState } from "react";
-import { ChevronRightIcon } from "@radix-ui/react-icons";
-import { ChevronLeftIcon } from "@radix-ui/react-icons";
-import BreadCrumb from "@/components/breadcrumb";
-import { motion } from "framer-motion";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+import {
+  CarIcon,
+  HeartIcon,
+  HomeIcon,
+  LaptopIcon,
+  MapPinIcon,
+  PackageIcon,
+  PlusIcon,
+  SearchIcon,
+  ShirtIcon,
+} from "lucide-react";
+import Link from "next/link";
+import * as React from "react";
+import { DashboardHeader } from "@/components/dashboard-header";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { BellIcon, SearchIcon } from "lucide-react";
-
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardPanel,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Empty,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty";
 import { Input } from "@/components/ui/input";
-import Image from "next/image";
-export default function page() {
-  const variants1 = {
-    hidden: { filter: "blur(10px)", opacity: 0 },
-    visible: { filter: "blur(0px)", opacity: 1 },
-  };
+import { Tabs, TabsList, TabsTab } from "@/components/ui/tabs";
+import { toastManager } from "@/components/ui/toast";
+import { products, type Product } from "@/lib/data";
 
-  const FirstTabData = [
-    {
-      key: "all",
-      title: "All",
-    },
-    {
-      key: "electronics",
-      title: " Electronics ",
-    },
-    {
-      key: "cars",
-      title: "Cars",
-    },
-    {
-      key: "realstate",
-      title: "Real State",
-    },
-    {
-      key: "clothes",
-      title: "Clothes",
-    },
-    {
-      key: "other",
-      title: "Other",
-    },
-  ];
+const categories = [
+  { label: "All", value: "all" },
+  { label: "Electronics", value: "electronics" },
+  { label: "Cars", value: "cars" },
+  { label: "Real Estate", value: "realestate" },
+  { label: "Clothes", value: "clothes" },
+  { label: "Other", value: "other" },
+];
 
-  const SecondTabData = [
-    {
-      key: "popular",
-      title: "Popular",
-    },
-    {
-      key: "newreleases",
-      title: "New  Releases",
-    },
-    {
-      key: "recentadded",
-      title: "Recent Added",
-    },
-    {
-      key: "foryou",
-      title: "For You",
-    },
-  ];
+const categoryIcon: Record<Product["category"], typeof LaptopIcon> = {
+  cars: CarIcon,
+  clothes: ShirtIcon,
+  electronics: LaptopIcon,
+  other: PackageIcon,
+  realestate: HomeIcon,
+};
 
-  const selectedTabData = [
-    {
-      price: "$200",
-      productName: "Mac Book",
-      location: "Pakistan",
-      productType: "cars",
-      rating: "4.7",
-      imagePath: "/images/car.jpg",
-      imageWidth: 200,
-      imageHeight: 110,
-    },
-    {
-      price: "$500",
-      productName: "IPhone 15 pro max",
-      location: "Bahrain",
-      productType: "electronics",
-      rating: "4.7",
-      imagePath: "/images/mobile.jpg",
-      imageWidth: 200,
-      imageHeight: 110,
-    },
-    {
-      price: "$2000",
-      productName: "House of Dream",
-      location: "Dubai",
-      productType: "realstate",
-      rating: "4.7",
-      imagePath: "/images/realState.jpg",
-      imageWidth: 200,
-      imageHeight: 110,
-    },
-    {
-      price: "$20",
-      productName: "Movie",
-      location: "Galway",
-      productType: "other",
-      rating: "4.7",
-      imagePath: "/images/a.avif",
-      imageWidth: 200,
-      imageHeight: 110,
-    },
-    {
-      price: "1500$",
-      productName: "Beautiful House",
-      location: "Maddina",
-      productType: "realstate",
-      rating: "4.7",
-      imagePath: "/images/realState.jpg",
-      imageWidth: 200,
-      imageHeight: 110,
-    },
-    {
-      price: "$20",
-      productName: "Clothes",
-      location: "Maka",
-      productType: "clothes",
-      rating: "4.7",
-      imagePath: "/images/cloths.jfif",
-      imageWidth: 200,
-      imageHeight: 110,
-    },
+export default function ProductsPage() {
+  const [category, setCategory] = React.useState("all");
+  const [query, setQuery] = React.useState("");
 
-    // ... add more product data here
-  ];
+  const filtered = products.filter((product) => {
+    const matchesCategory = category === "all" || product.category === category;
+    const matchesQuery = product.title
+      .toLowerCase()
+      .includes(query.toLowerCase());
+    return matchesCategory && matchesQuery;
+  });
 
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      transition={{ duration: 0.25 }}
-      variants={variants1}
-    >
-      <div className="flex-1 space-y-1">
-        <div className="flex w-full flex-col">
-          <Tabs defaultValue="all" className="space-y-4  rounded-md p-3">
-            <div
-              className="flex flex-col sm:flex-row items-start sm:items-center justify-between overflow-x-auto"
-              style={{ scrollbarWidth: "none" }}
-            >
-              <TabsList className="flex gap-2 mb-2 sm:mb-0">
-                {FirstTabData.map((tab) => (
-                  <TabsTrigger key={tab.key} value={tab.key}>
-                    {tab.title}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
+    <>
+      <DashboardHeader
+        breadcrumbs={[
+          { href: "/dashboard", label: "Dashboard" },
+          { label: "Products" },
+        ]}
+      />
+      <div className="flex flex-1 flex-col gap-4 p-4 lg:p-6">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="grid gap-1">
+            <h1 className="font-heading font-semibold text-2xl tracking-tight">
+              Products
+            </h1>
+            <p className="text-muted-foreground text-sm">
+              Browse listings across every category.
+            </p>
+          </div>
+          <Button
+            onClick={() =>
+              toastManager.add({
+                description: "Posting ads is disabled in this demo.",
+                title: "Post an ad",
+              })
+            }
+          >
+            <PlusIcon />
+            Post an ad
+          </Button>
+        </div>
 
-              <div className="flex gap-2 p-2">
-                <div className="flex items-center border rounded-md ">
-                  <SearchIcon size={20} className="ml-2" />
-                  <Input
-                    type="text"
-                    placeholder="Search Product"
-                    className="border-none focus:outline-none focus:border-none ml-2 flex-1"
-                  />
-                </div>
-
-                <Button variant="outline" size="icon">
-                  <BellIcon size={20} color="currentColor" />
-                </Button>
-
-                <Button variant="outline" size="icon">
-                  <Avatar className="h-5 w-5">
-                    <AvatarImage
-                      src="https://github.com/shadcn.png"
-                      alt="@shadcn"
-                    />
-                    <AvatarFallback>CN</AvatarFallback>
-                  </Avatar>
-                </Button>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div className="text-black font-semibold dark:text-white">
-                Featured Ads
-              </div>
-              <div className="flex gap-2">
-                <Button variant="outline" size="icon">
-                  <ChevronLeftIcon className="h-4 w-4" />
-                </Button>
-                <Button variant="outline" size="icon">
-                  <ChevronRightIcon className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
-            {FirstTabData.map((tab) => (
-              <TabsContent value={tab.key} className="space-y-4  pb-8">
-                <div
-                  className="flex justify-start space-x-4 overflow-x-auto hide-scrollbar overflow-hidden"
-                  style={{
-                    scrollbarWidth: "thin",
-                    scrollbarColor: "transparent transparent",
-                    msOverflowStyle: "none",
-                  }}
-                >
-                  {selectedTabData
-                    .filter(
-                      (product) =>
-                        product.productType === tab.key || tab.key == "all"
-                    )
-                    .map((product) => (
-                      <div
-                        key={product.productType}
-                        className="max-w-md rounded-lg p-1 mb-3 hover:shadow-lg hover:bg-gray-200 dark:hover:shadow-lg dark:hover:bg-gray-900"
-                        style={{ width: 210, height: 190 }}
-                      >
-                        <div
-                          className="relative flex-shrink-0 overflow-hidden"
-                          style={{ width: 200, height: 110 }}
-                        >
-                          <Image
-                            src={product.imagePath}
-                            alt="Movie Poster"
-                            width={product.imageWidth}
-                            height={product.imageHeight}
-                            className="rounded-lg object-cover"
-                            style={{ width: "100%", height: "100%" }}
-                          />
-
-                          <div className="absolute top-0 right-0 m-2  from-transparent to-black rounded-sm px-2 py-1">
-                            <p className="bg-white dark:bg-gray-800 rounded-sm px-1 font-bold text-xs dark:text-white">
-                              {product.rating}
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className="flex items-center justify-between p-1 ">
-                          <div>
-                            <p className="text-lg font-bold text-gray-800 dark:text-white">
-                              {product.price}
-                            </p>
-                            <p className="text-sm text-gray-600 dark:text-white">
-                              {product.productName}
-                            </p>
-                            <p className="text-sm text-gray-500 dark:text-white">
-                              {product.location}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                </div>
-
-                <Tabs defaultValue="popular" className="space-y-4 ">
-                  <div
-                    className="flex flex-col sm:flex-row items-start sm:items-center justify-between overflow-x-auto"
-                    style={{ scrollbarWidth: "none" }}
-                  >
-                    <TabsList className="flex gap-2 mb-2 sm:mb-0 bg-transparent space-x-4">
-                      {SecondTabData.map((tabs) => (
-                        <TabsTrigger value={tabs.key} className="text-md p-1">
-                          {tabs.title}
-                        </TabsTrigger>
-                      ))}
-                    </TabsList>
-                    <Button variant="secondary" className="sm:ml-4">
-                      Show All
-                    </Button>
-                  </div>
-
-                  {SecondTabData.map((tabs) => (
-                    <TabsContent value={tabs.key} className="space-y-4">
-                      <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                        {selectedTabData
-                          .filter(
-                            (product) =>
-                              product.productType === tab.key ||
-                              tab.key === "all"
-                          )
-                          .map((product) => (
-                            <div
-                              key={product.productType}
-                              className="max-w-md rounded-lg p-1 mb-2 hover:shadow-lg hover:bg-gray-200 overflow-hidden dark:hover:shadow-lg dark:hover:bg-gray-900"
-                              style={{ width: "100%", height: 300 }}
-                            >
-                              <div
-                                className="relative flex-shrink-0 overflow-hidden"
-                                style={{ width: "100%", height: 200 }}
-                              >
-                                <Image
-                                  src={product.imagePath}
-                                  alt="Movie Poster"
-                                  width={product.imageWidth}
-                                  height={product.imageHeight}
-                                  className="rounded-lg object-cover"
-                                  style={{
-                                    width: "100%",
-                                    height: "100%",
-                                  }}
-                                />
-                                <div className="absolute top-0 right-0 m-2  from-transparent to-black rounded-sm px-2 py-1">
-                                  <p className="bg-white dark:bg-gray-800 rounded-sm px-1 font-bold text-xs dark:text-white">
-                                    {product.rating}
-                                  </p>
-                                </div>
-                              </div>
-
-                              <div className="flex items-center justify-between p-1">
-                                <div>
-                                  <p className="text-lg font-bold text-gray-800 dark:text-white">
-                                    {product.price}
-                                  </p>
-                                  <p className="text-sm text-gray-600 dark:text-white">
-                                    {product.productName}
-                                  </p>
-                                  <p className="text-sm text-gray-500 dark:text-white">
-                                    {product.location}
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          ))}
-                      </div>
-                    </TabsContent>
-                  ))}
-                </Tabs>
-              </TabsContent>
-            ))}
+        <div className="flex flex-wrap items-center gap-3">
+          <Tabs onValueChange={(value) => setCategory(value as string)} value={category}>
+            <TabsList>
+              {categories.map((item) => (
+                <TabsTab key={item.value} value={item.value}>
+                  {item.label}
+                </TabsTab>
+              ))}
+            </TabsList>
           </Tabs>
+          <div className="relative ms-auto w-full sm:max-w-56">
+            <SearchIcon className="-translate-y-1/2 pointer-events-none absolute top-1/2 left-2.5 size-4 text-muted-foreground" />
+            <Input
+              className="ps-8"
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Search products…"
+              value={query}
+            />
+          </div>
+        </div>
+
+        {filtered.length === 0 ? (
+          <Empty className="min-h-72 rounded-2xl border border-dashed">
+            <EmptyHeader>
+              <EmptyMedia variant="icon">
+                <PackageIcon />
+              </EmptyMedia>
+              <EmptyTitle>No products found</EmptyTitle>
+              <EmptyDescription>
+                Try a different search or category.
+              </EmptyDescription>
+            </EmptyHeader>
+          </Empty>
+        ) : (
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            {filtered.map((product) => {
+              const Icon = categoryIcon[product.category];
+              return (
+                <Card
+                  className="transition-colors hover:bg-accent/50"
+                  key={product.id}
+                  render={<Link href="/dashboard/addetails" />}
+                >
+                  <CardPanel className="pt-6 pb-0">
+                    <div className="flex h-36 items-center justify-center rounded-xl border bg-muted/50">
+                      <Icon className="size-10 text-muted-foreground" />
+                    </div>
+                  </CardPanel>
+                  <CardHeader className="pt-4">
+                    <CardTitle className="flex items-center justify-between gap-2 text-base">
+                      {product.title}
+                      <span className="shrink-0 font-semibold tabular-nums">
+                        {product.price}
+                      </span>
+                    </CardTitle>
+                    <CardDescription className="flex w-full items-center gap-3">
+                      <span className="inline-flex items-center gap-1">
+                        <MapPinIcon className="size-3.5" />
+                        {product.location}
+                      </span>
+                      <span>{product.postedAt}</span>
+                      <span className="ms-auto inline-flex items-center gap-2">
+                        <Badge
+                          variant={product.condition === "New" ? "success" : "secondary"}
+                        >
+                          {product.condition}
+                        </Badge>
+                        <HeartIcon className="size-4" />
+                      </span>
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
+              );
+            })}
+          </div>
+        )}
+
+        <div className="mt-auto flex items-center justify-between text-muted-foreground text-sm">
+          <span>
+            Showing {filtered.length} of {products.length} listings
+          </span>
+          <div className="flex items-center gap-2">
+            <Button disabled size="sm" variant="outline">
+              Previous
+            </Button>
+            <Button disabled size="sm" variant="outline">
+              Next
+            </Button>
+          </div>
         </div>
       </div>
-    </motion.div>
+    </>
   );
 }
