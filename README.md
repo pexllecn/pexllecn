@@ -1,29 +1,37 @@
 # Pexllecn
 
-A complete Next.js starter rebuilt from scratch with [coss ui](https://coss.com/ui) — the design system of Cal.com, built on top of [Base UI](https://base-ui.com) and styled with Tailwind CSS v4.
+Four complete applications built from scratch with [coss ui](https://coss.com/ui) — the design system of Cal.com, on [Base UI](https://base-ui.com) and Tailwind CSS v4. **44 pages**, composed exclusively from coss ui elements, exercising **every one of the 53 components** in the library in a real product context. No Radix, no NextUI, no bespoke forks — one design system end to end.
 
-Every page is composed exclusively from coss ui elements. No Radix, no NextUI, no bespoke component forks — one design system end to end.
+The landing page at `/` is an app switcher into the four apps below. Each app uses a different navigation shell so the coss `Sidebar` variants and a top-nav layout are all demonstrated.
 
-## Pages
+## Apps
 
-| Route | Description |
+### Workspace — `/dashboard` (collapsible sidebar + ⌘K palette)
+
+The original pexllecn starter, rebuilt. Home, overview (stat cards, chart, recent sales), products, ad details, chat, inbox, users table, employees table, profile stepper, kanban, settings (tabbed), and an empty-state page. Breadcrumb header, notifications menu, dark-mode toggle. Sign-in at `/signin` (email → OTP step).
+
+### Atlas CRM — `/crm` (top navigation)
+
+| Route | Highlights |
 | --- | --- |
-| `/` | Landing — hero, feature cards, theme toggle |
-| `/signin` | Split-screen sign-in — email + OTP code step, social buttons |
-| `/dashboard` | Home — greeting, goal progress, workspace shortcuts |
-| `/dashboard/overview` | Overview — stat cards, revenue chart, recent sales, tabs, dialog, toasts |
-| `/dashboard/products` | Products — category tabs, search, listing cards |
-| `/dashboard/addetails` | Ad details — gallery, price panel, seller card, featured ads |
-| `/dashboard/chat` | Chat — conversation list, message thread, composer |
-| `/dashboard/inbox` | Inbox — mail list with filters, reading pane, reply box |
-| `/dashboard/user` | Users — searchable table, filters, add-user sheet, row menus |
-| `/dashboard/employee` | Employees — team directory table, add-employee dialog |
-| `/dashboard/profile` | Profile — three-step stepper form with progress |
-| `/dashboard/kanban` | Kanban — columns, task cards, new-task dialog, move/delete actions |
-| `/dashboard/settings` | Settings — general, appearance, display, and notification tabs |
-| `/dashboard/emptypage` | Empty state — blank canvas page |
+| `/crm` | Dashboard — frame, meters, tooltip cards |
+| `/crm/leads` | Table — toolbar, popover filter, checkbox-group, pagination |
+| `/crm/lead-detail` | Preview-card, tabs, group, kbd, timeline |
+| `/crm/contacts` | Autocomplete jump-to, table |
+| `/crm/companies` | Accordion of accounts, collapsible enrichment |
+| `/crm/deals` | Toggle-group view switch, right-click context menus |
+| `/crm/schedule` | Calendar, popover quick-add |
+| `/crm/reports` | Tabs, meters, funnel |
+| `/crm/import` | Form, fieldset, number-field, radio-group, spinner |
+| `/crm/settings` | Form, toggle, toggle-group, switches |
 
-The dashboard shell is the coss ui `Sidebar` (collapsible to icons, mobile sheet, cookie persistence) with breadcrumb header, notifications menu, dark-mode toggle, and a ⌘K command palette.
+### Trak Projects — `/projects` (floating sidebar)
+
+Overview (frame), board (context menus), backlog (collapsible groups + number-field capacity), sprint (progress + table), roadmap (toggle-group timeline/grid), issues (combobox filter), docs (skeleton loading + rich-text toolbar), releases (accordion), activity (preview-card avatars), team (drawer profiles).
+
+### Ledger Finance — `/finance` (inset sidebar)
+
+Overview (meters), accounts (group actions), transactions (popover filter + pagination), transfer (combobox + number-field form), cards (toggle reveal/freeze + slider limit), invoices (drawer details), budgets (meter + slider + dialog), analytics (tabs + toggle-group), recipients (multi-select combobox chips), settings (OTP payment PIN, switches).
 
 ## Stack
 
