@@ -1,9 +1,8 @@
 import "./globals.css";
-import "@fontsource-variable/inter";
 
-import { GeistMono } from "geist/font/mono";
 import type { Metadata } from "next";
 import { Providers } from "@/components/providers";
+import { fontMono, fontSans } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: {
@@ -20,8 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={GeistMono.variable}>
-      <body className="bg-background font-sans text-foreground antialiased">
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${fontSans.variable} ${fontMono.variable} bg-background font-sans text-foreground antialiased`}
+      >
         <Providers>{children}</Providers>
       </body>
     </html>

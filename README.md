@@ -31,7 +31,8 @@ The dashboard shell is the coss ui `Sidebar` (collapsible to icons, mobile sheet
 - **coss ui** — all 53 registry components vendored under `components/ui/` (MIT-licensed, from `apps/ui` of [cosscom/coss](https://github.com/cosscom/coss))
 - **Base UI** primitives (`@base-ui/react`)
 - **Tailwind CSS v4** — the full coss ui theme lives in `app/globals.css` (CSS variables for light/dark)
-- **next-themes** for dark mode, **Inter Variable** + **Geist Mono** fonts (self-hosted via npm)
+- **next-themes** for dark mode
+- **Cal Sans 2.0** + **Paper Mono** — the exact fonts coss.com/ui uses, self-hosted in `lib/fonts/` (both SIL OFL 1.1)
 
 ## Getting started
 

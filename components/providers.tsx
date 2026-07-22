@@ -2,7 +2,10 @@
 
 import { ThemeProvider } from "next-themes";
 import type * as React from "react";
-import { ToastProvider } from "@/components/ui/toast";
+import {
+  AnchoredToastProvider,
+  ToastProvider,
+} from "@/components/ui/toast";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -12,7 +15,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
       enableSystem
       disableTransitionOnChange
     >
-      <ToastProvider>{children}</ToastProvider>
+      <ToastProvider>
+        <AnchoredToastProvider>{children}</AnchoredToastProvider>
+      </ToastProvider>
     </ThemeProvider>
   );
 }
