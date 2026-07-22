@@ -1,132 +1,89 @@
 "use client";
-import * as React from "react";
-import * as TabsPrimitive from "@radix-ui/react-tabs";
+
+import { Tabs as TabsPrimitive } from "@base-ui/react/tabs";
+import type React from "react";
 import { cn } from "@/lib/utils";
 
-type TabsContextType = {
-  activeTab: string | undefined;
-  setActiveTab: React.Dispatch<React.SetStateAction<string | undefined>>;
-} | null;
+export type TabsVariant = "default" | "underline";
 
-const TabsContext = React.createContext<TabsContextType>(null);
-
-const Tabs = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root>
->(({ className, ...props }, ref) => {
-  const [activeTab, setActiveTab] = React.useState<string | undefined>(
-    props.defaultValue
-  );
-
+export function Tabs({
+  className,
+  ...props
+}: TabsPrimitive.Root.Props): React.ReactElement {
   return (
-    <TabsContext.Provider value={{ activeTab, setActiveTab }}>
-      <TabsPrimitive.Root
-        ref={ref}
-        className={cn("relative", className)}
-        {...props}
-        onValueChange={(value) => {
-          setActiveTab(value);
-          props.onValueChange?.(value);
-        }}
-      />
-    </TabsContext.Provider>
+    <TabsPrimitive.Root
+      className={cn(
+        "flex flex-col gap-2 data-[orientation=vertical]:flex-row",
+        className,
+      )}
+      data-slot="tabs"
+      {...props}
+    />
   );
-});
-Tabs.displayName = TabsPrimitive.Root.displayName;
+}
 
-const TabsList = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.List>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
->(({ className, ...props }, ref) => {
-  const tabsListRef = React.useRef<HTMLDivElement | null>(null);
-  const context = React.useContext(TabsContext);
-  const activeTab = context ? context.activeTab : undefined;
-  const [backgroundStyle, setBackgroundStyle] = React.useState({});
-
-  React.useEffect(() => {
-    const updateBackground = () => {
-      const tabsList = tabsListRef.current;
-      if (tabsList) {
-        const activeTabElement = tabsList.querySelector(
-          `[data-state="active"]`
-        ) as HTMLElement | null;
-        if (activeTabElement) {
-          setBackgroundStyle({
-            width: `${activeTabElement.clientWidth}px`,
-            transform: `translateX(${activeTabElement.offsetLeft}px)`,
-            height: "calc(100% - 0.5rem)", // Subtracting 0.5rem (8px) for padding
-            top: "0.25rem", // Adding 0.25rem (4px) top padding
-            transition: "all 0.3s ease"
-          });
-        }
-      }
-    };
-
-    updateBackground();
-    window.addEventListener("resize", updateBackground);
-    return () => window.removeEventListener("resize", updateBackground);
-  }, [activeTab]);
-
-  // Combine the forwarded ref and our internal ref
-  const combinedRef = React.useCallback(
-    (element: HTMLDivElement | null) => {
-      tabsListRef.current = element;
-      if (typeof ref === "function") {
-        ref(element);
-      } else if (ref) {
-        ref.current = element;
-      }
-    },
-    [ref]
-  );
-
+export function TabsList({
+  variant = "default",
+  className,
+  children,
+  ...props
+}: TabsPrimitive.List.Props & {
+  variant?: TabsVariant;
+}): React.ReactElement {
   return (
     <TabsPrimitive.List
-      ref={combinedRef}
       className={cn(
-        "inline-flex h-10 items-center justify-center rounded-[calc(var(--radius)-0.25rem)] bg-muted p-1 text-muted-foreground relative",
-        className
+        "relative z-0 flex w-fit items-center justify-center gap-x-0.5 text-muted-foreground",
+        "data-[orientation=vertical]:flex-col",
+        variant === "default"
+          ? "rounded-lg bg-muted p-0.5 text-muted-foreground/72"
+          : "data-[orientation=vertical]:px-1 data-[orientation=horizontal]:py-1 *:data-[slot=tabs-tab]:hover:bg-accent",
+        className,
       )}
+      data-slot="tabs-list"
       {...props}
     >
-      <div
-        className="absolute left-0 bg-background rounded-[calc(var(--radius)-0.25rem)] transition-all duration-300 ease-in-out shadow"
-        style={backgroundStyle}
+      {children}
+      <TabsPrimitive.Indicator
+        className={cn(
+          "absolute bottom-0 left-0 h-(--active-tab-height) w-(--active-tab-width) translate-x-(--active-tab-left) -translate-y-(--active-tab-bottom) transition-[width,translate] duration-200 ease-in-out",
+          variant === "underline"
+            ? "z-10 bg-primary data-[orientation=horizontal]:h-0.5 data-[orientation=vertical]:w-0.5 data-[orientation=vertical]:-translate-x-px data-[orientation=horizontal]:translate-y-px"
+            : "-z-1 rounded-md bg-background shadow-sm/5 dark:bg-input",
+        )}
+        data-slot="tab-indicator"
       />
-      {props.children}
     </TabsPrimitive.List>
   );
-});
-TabsList.displayName = TabsPrimitive.List.displayName;
+}
 
-const TabsTrigger = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
->(({ className, ...props }, ref) => (
-  <TabsPrimitive.Trigger
-    ref={ref}
-    className={cn(
-      "inline-flex items-center justify-center whitespace-nowrap rounded-[calc(var(--radius)-0.25rem)] px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-foreground relative z-10",
-      className
-    )}
-    {...props}
-  />
-));
-TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
+export function TabsTab({
+  className,
+  ...props
+}: TabsPrimitive.Tab.Props): React.ReactElement {
+  return (
+    <TabsPrimitive.Tab
+      className={cn(
+        "relative flex h-9 shrink-0 grow cursor-pointer items-center justify-center gap-1.5 whitespace-nowrap rounded-md border border-transparent px-[calc(--spacing(2.5)-1px)] font-medium text-base outline-none transition-[color,background-color,box-shadow] hover:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring data-disabled:pointer-events-none data-[orientation=vertical]:w-full data-[orientation=vertical]:justify-start data-active:text-foreground data-disabled:opacity-64 sm:h-8 sm:text-sm [&_svg:not([class*='size-'])]:size-4.5 sm:[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:-mx-0.5 [&_svg]:shrink-0",
+        className,
+      )}
+      data-slot="tabs-tab"
+      {...props}
+    />
+  );
+}
 
-const TabsContent = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
->(({ className, ...props }, ref) => (
-  <TabsPrimitive.Content
-    ref={ref}
-    className={cn(
-      "mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-      className
-    )}
-    {...props}
-  />
-));
-TabsContent.displayName = TabsPrimitive.Content.displayName;
+export function TabsPanel({
+  className,
+  ...props
+}: TabsPrimitive.Panel.Props): React.ReactElement {
+  return (
+    <TabsPrimitive.Panel
+      className={cn("flex-1 outline-none", className)}
+      data-slot="tabs-content"
+      {...props}
+    />
+  );
+}
 
-export { Tabs, TabsList, TabsTrigger, TabsContent };
+export { TabsPrimitive, TabsTab as TabsTrigger, TabsPanel as TabsContent };

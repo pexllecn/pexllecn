@@ -1,122 +1,84 @@
 "use client";
-import * as React from "react";
+
+import { SearchIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { DialogProps } from "@radix-ui/react-alert-dialog";
-import { NavItem, SidebarNavItem } from "@/types";
+import * as React from "react";
 import {
-  CircleIcon,
-  FileIcon,
-  LaptopIcon,
-  MoonIcon,
-  SunIcon,
-} from "@radix-ui/react-icons";
-import { useTheme } from "next-themes";
-import { docsConfig } from "@/config/docs";
-import { cn } from "@/lib/utils";
-import { Button } from "@/registry/new-york/ui/button";
-import {
+  Command,
   CommandDialog,
+  CommandDialogPopup,
+  CommandDialogTrigger,
   CommandEmpty,
+  CommandFooter,
   CommandGroup,
+  CommandGroupLabel,
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
-} from "@/registry/new-york/ui/command";
+} from "@/components/ui/command";
+import { Kbd, KbdGroup } from "@/components/ui/kbd";
+import { navItems } from "@/lib/nav";
+import { cn } from "@/lib/utils";
 
-export function CommandMenu({ ...props }: DialogProps) {
+export function CommandMenu({ className }: { className?: string }) {
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
-  const { setTheme } = useTheme();
 
   React.useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setOpen((open) => !open);
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "k" && (event.metaKey || event.ctrlKey)) {
+        event.preventDefault();
+        setOpen((current) => !current);
       }
     };
-
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
-  }, []);
-
-  const runCommand = React.useCallback((command: () => unknown) => {
-    setOpen(false);
-    command();
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
   }, []);
 
   return (
-    <>
-      <Button
-        variant="outline"
+    <CommandDialog onOpenChange={setOpen} open={open}>
+      <CommandDialogTrigger
         className={cn(
-          "h-8 relative w-full justify-start shadow-none text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64"
+          "inline-flex h-8 cursor-pointer items-center gap-2 rounded-lg border border-input bg-popover px-2.5 text-muted-foreground text-sm shadow-xs/5 outline-none transition-shadow hover:bg-accent/50 focus-visible:ring-2 focus-visible:ring-ring dark:bg-input/32 dark:hover:bg-input/64",
+          className,
         )}
-        onClick={() => setOpen(true)}
-        {...props}
       >
-        <span className="hidden lg:inline-flex">Search documentation...</span>
-        <span className="inline-flex lg:hidden">Search...</span>
-        <kbd className="pointer-events-none absolute right-1.5 top-1.5 hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
-          <span className="text-xs">⌘</span>K
-        </kbd>
-      </Button>
-      <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Type a command or search..." />
-        <CommandList>
+        <SearchIcon className="size-4 opacity-80" />
+        <span className="hidden sm:inline">Search…</span>
+        <KbdGroup className="hidden sm:inline-flex">
+          <Kbd>⌘</Kbd>
+          <Kbd>K</Kbd>
+        </KbdGroup>
+      </CommandDialogTrigger>
+      <CommandDialogPopup>
+        <Command>
+          <CommandInput placeholder="Type a page name…" />
           <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Links">
-            {docsConfig.mainNav
-              .filter((navitem) => !navitem.external)
-              .map((navItem) => (
+          <CommandList>
+            <CommandGroup>
+              <CommandGroupLabel>Pages</CommandGroupLabel>
+              {navItems.map((item) => (
                 <CommandItem
-                  key={navItem.href}
-                  value={navItem.title}
-                  onSelect={() => {
-                    runCommand(() => router.push(navItem.href as string));
+                  key={item.href}
+                  onClick={() => {
+                    setOpen(false);
+                    router.push(item.href);
                   }}
+                  value={item.title}
                 >
-                  <FileIcon className="mr-2 h-4 w-4" />
-                  {navItem.title}
-                </CommandItem>
-              ))}
-          </CommandGroup>
-          {docsConfig.sidebarNav.map((group) => (
-            <CommandGroup key={group.title} heading={group.title}>
-              {group.items.map((navItem: NavItem) => (
-                <CommandItem
-                  key={navItem.href}
-                  value={navItem.title}
-                  onSelect={() => {
-                    runCommand(() => router.push(navItem.href as string));
-                  }}
-                >
-                  <div className="mr-2 flex h-4 w-4 items-center justify-center">
-                    <CircleIcon className="h-3 w-3" />
-                  </div>
-                  {navItem.title}
+                  <item.icon />
+                  {item.title}
                 </CommandItem>
               ))}
             </CommandGroup>
-          ))}
-          <CommandSeparator />
-          <CommandGroup heading="Theme">
-            <CommandItem onSelect={() => runCommand(() => setTheme("light"))}>
-              <SunIcon className="mr-2 h-4 w-4" />
-              Light
-            </CommandItem>
-            <CommandItem onSelect={() => runCommand(() => setTheme("dark"))}>
-              <MoonIcon className="mr-2 h-4 w-4" />
-              Dark
-            </CommandItem>
-            <CommandItem onSelect={() => runCommand(() => setTheme("system"))}>
-              <LaptopIcon className="mr-2 h-4 w-4" />
-              System
-            </CommandItem>
-          </CommandGroup>
-        </CommandList>
-      </CommandDialog>
-    </>
+          </CommandList>
+          <CommandFooter>
+            <span className="text-muted-foreground text-xs">
+              Navigate with ↑↓, open with ↵
+            </span>
+          </CommandFooter>
+        </Command>
+      </CommandDialogPopup>
+    </CommandDialog>
   );
 }

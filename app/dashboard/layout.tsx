@@ -1,33 +1,19 @@
-import Sidebar from "@/components/layout/sidebar";
-import type { Metadata } from "next";
-import { MobileSidebar } from "@/components/layout/mobile-sidebar";
-import { cn } from "@/lib/utils";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Toaster } from "@/components/ui/sonner";
+import { cookies } from "next/headers";
+import { AppSidebar } from "@/components/app-sidebar";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
-export const metadata: Metadata = {
-  title: "Pexlle",
-  description: "Basic dashboard with Next.js and Shadcn",
-};
-
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
+  const cookieStore = await cookies();
+  const defaultOpen = cookieStore.get("sidebar_state")?.value !== "false";
+
   return (
-    <div className="h-full">
-      <div className={cn("p-5 block sm:!hidden")}>
-        <MobileSidebar />
-      </div>
-      <div className="flex h-full overflow-hidden max-h-screen">
-        <Sidebar className="w-64 hidden md:block" />
-        <main className="flex-1 overflow-x-hidden h-full pl-1">
-          {children}
-          <Toaster richColors />
-          <SpeedInsights />
-        </main>
-      </div>
-    </div>
+    <SidebarProvider defaultOpen={defaultOpen}>
+      <AppSidebar />
+      <SidebarInset>{children}</SidebarInset>
+    </SidebarProvider>
   );
 }

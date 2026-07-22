@@ -1,34 +1,29 @@
-import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import { Inter as FontSans } from "next/font/google";
-import { cn } from "@/lib/utils";
+
+import type { Metadata } from "next";
+import { Providers } from "@/components/providers";
+import { fontMono, fontSans } from "@/lib/fonts";
 
 export const metadata: Metadata = {
-  title: "Pexlle",
-  description: "Basic dashboard with Next.js and Shadcn",
+  title: {
+    default: "Pexllecn",
+    template: "%s - Pexllecn",
+  },
+  description:
+    "A complete Next.js starter rebuilt with coss ui — Base UI primitives styled with Tailwind CSS.",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="en" suppressHydrationWarning className="h-full">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={cn(
-          "overflow-hidden h-full bg-background font-sans antialiased"
-        )}
+        className={`${fontSans.variable} ${fontMono.variable} bg-background font-sans text-foreground antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

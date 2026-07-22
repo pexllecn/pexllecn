@@ -1,16 +1,54 @@
 "use client";
-import BreadCrumb from "@/components/breadcrumb";
-import { Heading } from "@/components/ui/heading";
 
-const breadcrumbItems = [{ title: "Empty page", link: "/dashboard/emptypage" }];
-export default function page() {
+import { FolderOpenIcon, PlusIcon } from "lucide-react";
+import { DashboardHeader } from "@/components/dashboard-header";
+import { Button } from "@/components/ui/button";
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty";
+import { toastManager } from "@/components/ui/toast";
+
+export default function EmptyPage() {
   return (
-    <div className="flex-1 space-y-4 p-4 pt-6">
-      <BreadCrumb items={breadcrumbItems} />
-      <Heading
-        title={`Empty Page`}
-        description=" Manage your account settings and set e-mail preferences."
-      />{" "}
-    </div>
+    <>
+      <DashboardHeader
+        breadcrumbs={[
+          { href: "/dashboard", label: "Dashboard" },
+          { label: "Empty Page" },
+        ]}
+      />
+      <div className="flex flex-1 flex-col p-4 lg:p-6">
+        <Empty className="flex-1 rounded-2xl border border-dashed">
+          <EmptyHeader>
+            <EmptyMedia variant="icon">
+              <FolderOpenIcon />
+            </EmptyMedia>
+            <EmptyTitle>Nothing here yet</EmptyTitle>
+            <EmptyDescription>
+              This page is intentionally empty — a blank canvas for your next
+              feature.
+            </EmptyDescription>
+          </EmptyHeader>
+          <EmptyContent>
+            <Button
+              onClick={() =>
+                toastManager.add({
+                  description: "This is where your feature would begin.",
+                  title: "Let's build",
+                })
+              }
+            >
+              <PlusIcon />
+              Create something
+            </Button>
+          </EmptyContent>
+        </Empty>
+      </div>
+    </>
   );
 }
