@@ -2,83 +2,22 @@ import {
   ActivityIcon,
   CreditCardIcon,
   DollarSignIcon,
-  TrendingDownIcon,
-  TrendingUpIcon,
   UsersIcon,
 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardAction,
-  CardDescription,
-  CardHeader,
-  CardPanel,
-  CardTitle,
-} from "@/components/ui/card";
+import { StatTile, type Stat } from "@/components/apps/stat-tile";
 
-const stats = [
-  {
-    change: "+20.1%",
-    description: "Compared to last month",
-    icon: DollarSignIcon,
-    title: "Total Revenue",
-    trend: "up" as const,
-    value: "$45,231.89",
-  },
-  {
-    change: "+180.1%",
-    description: "New signups this month",
-    icon: UsersIcon,
-    title: "Subscriptions",
-    trend: "up" as const,
-    value: "+2,350",
-  },
-  {
-    change: "+19%",
-    description: "Orders across all channels",
-    icon: CreditCardIcon,
-    title: "Sales",
-    trend: "up" as const,
-    value: "+12,234",
-  },
-  {
-    change: "-4.5%",
-    description: "Users active in the last hour",
-    icon: ActivityIcon,
-    title: "Active Now",
-    trend: "down" as const,
-    value: "+573",
-  },
+const stats: Stat[] = [
+  { icon: DollarSignIcon, label: "Total Revenue", value: "$45,231.89", delta: "20.1%", trend: "up", spark: [30, 34, 32, 40, 44, 42, 50, 55, 53, 60, 66, 72] },
+  { icon: UsersIcon, label: "Subscriptions", value: "+2,350", delta: "180.1%", trend: "up", spark: [10, 14, 18, 22, 30, 38, 44, 52, 60, 68, 74, 82] },
+  { icon: CreditCardIcon, label: "Sales", value: "+12,234", delta: "19%", trend: "up", spark: [40, 44, 42, 48, 52, 50, 58, 62, 60, 66, 70, 74] },
+  { icon: ActivityIcon, label: "Active Now", value: "+573", delta: "4.5%", trend: "down", spark: [60, 58, 62, 59, 63, 60, 64, 58, 61, 57, 55, 54] },
 ];
 
 export function StatsCards() {
   return (
-    <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+    <div className="grid gap-4 stagger md:grid-cols-2 xl:grid-cols-4">
       {stats.map((stat) => (
-        <Card key={stat.title}>
-          <CardHeader>
-            <CardDescription className="flex items-center gap-1.5">
-              <stat.icon className="size-3.5" />
-              {stat.title}
-            </CardDescription>
-            <CardTitle className="font-semibold text-2xl tabular-nums">
-              {stat.value}
-            </CardTitle>
-            <CardAction>
-              <Badge variant={stat.trend === "up" ? "success" : "destructive"}>
-                {stat.trend === "up" ? (
-                  <TrendingUpIcon />
-                ) : (
-                  <TrendingDownIcon />
-                )}
-                {stat.change}
-              </Badge>
-            </CardAction>
-          </CardHeader>
-          <CardPanel className="text-muted-foreground text-sm">
-            {stat.description}
-          </CardPanel>
-        </Card>
+        <StatTile key={stat.label} stat={stat} />
       ))}
     </div>
   );

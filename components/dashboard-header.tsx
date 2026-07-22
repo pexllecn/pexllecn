@@ -37,7 +37,7 @@ const notifications = [
 
 export function DashboardHeader({ breadcrumbs }: { breadcrumbs: Crumb[] }) {
   return (
-    <header className="flex h-14 shrink-0 items-center gap-2 border-b px-4 lg:px-6">
+    <header className="glass sticky top-0 z-30 flex h-14 shrink-0 items-center gap-2 border-b px-4 lg:px-6">
       <SidebarTrigger className="-ml-1.5" />
       <Separator className="mr-1 h-4" orientation="vertical" />
       <Breadcrumb>
